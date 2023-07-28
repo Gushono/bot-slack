@@ -223,60 +223,59 @@ def get_block_secure_code_warrior():
 
 def get_blocks_links_secure_code_warriors():
     return {
-        "type": "modal",
-        "title": {
-            "type": "plain_text",
-            "text": "All links",
-            "emoji": True
-        },
-        "blocks": [
+        "attachments": [
             {
-                "type": "divider"
-            },
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "*<fakeLink.toHotelPage.com|MELI TOP 5 - BACKEND>*\n★★★★★\nRated: 10.0 - Excellent"
-                },
-                "accessory": {
-                    "type": "image",
-                    "image_url": "https://api.slack.com/img/blocks/bkb_template_images/tripAgent_1.png",
-                    "alt_text": "Meli top 5 backend"
-                }
-            },
-            {
-                "type": "divider"
-            },
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "*<fakeLink.toHotelPage.com|MELI TOP 5 - FRONTEND>*\n★★★★★\nRated: 10.0 - Excellent"
-                },
-                "accessory": {
-                    "type": "image",
-                    "image_url": "https://api.slack.com/img/blocks/bkb_template_images/tripAgent_1.png",
-                    "alt_text": "Meli top 5 frontend"
-                }
-            },
-            {
-                "type": "divider"
-            },
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "*<fakeLink.toHotelPage.com|MELI TOP 5 - MOBILE>*\n★★★★★\nRated: 10.0 - Excellent"
-                },
-                "accessory": {
-                    "type": "image",
-                    "image_url": "https://api.slack.com/img/blocks/bkb_template_images/tripAgent_1.png",
-                    "alt_text": "Windsor Court Hotel thumbnail"
-                }
-            },
-            {
-                "type": "divider"
+                "color": "#f2c744",
+                "blocks": [
+                    {
+                        "type": "divider"
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": "*<fakeLink.toHotelPage.com|MELI TOP 5 - BACKEND>*\n★★★★★\nRated: 10.0 - Excellent"
+                        },
+                        "accessory": {
+                            "type": "image",
+                            "image_url": "https://api.slack.com/img/blocks/bkb_template_images/tripAgent_1.png",
+                            "alt_text": "Meli top 5 backend"
+                        }
+                    },
+                    {
+                        "type": "divider"
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": "*<fakeLink.toHotelPage.com|MELI TOP 5 - FRONTEND>*\n★★★★★\nRated: 10.0 - Excellent"
+                        },
+                        "accessory": {
+                            "type": "image",
+                            "image_url": "https://api.slack.com/img/blocks/bkb_template_images/tripAgent_1.png",
+                            "alt_text": "Meli top 5 frontend"
+                        }
+                    },
+                    {
+                        "type": "divider"
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": "*<fakeLink.toHotelPage.com|MELI TOP 5 - MOBILE>*\n★★★★★\nRated: 10.0 - Excellent"
+                        },
+                        "accessory": {
+                            "type": "image",
+                            "image_url": "https://api.slack.com/img/blocks/bkb_template_images/tripAgent_1.png",
+                            "alt_text": "Windsor Court Hotel thumbnail"
+                        }
+                    },
+                    {
+                        "type": "divider"
+                    }
+                ]
             }
         ]
     }
