@@ -102,7 +102,7 @@ def echo_interactive():  # pragma: no cover
             print("Entrou em secure_code_warrior_value")
             slack_client.client.chat_postMessage(
                 text="TESTE SECURE CODE WARRIOR",
-                thread_ts=payload["message"]["ts_thread"],
+                thread_ts=payload["message"]["thread_ts"],
                 channel=payload["channel"]["id"]
             )
 
