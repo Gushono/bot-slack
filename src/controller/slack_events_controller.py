@@ -46,8 +46,6 @@ def handle_message(event_data):
         send_welcome_message(f'@{user}', user=user, slack_client=slack_client.client)
         return
     else:
-        print(event)
-
         initial_message = get_block_initial_message()
         ts_thread = event.get("ts")
         slack_client.client.chat_postMessage(
@@ -99,6 +97,15 @@ def echo_interactive():  # pragma: no cover
 
     if payload.get("actions") is not None:
         print("Entrou em actions")
+        if payload['actions'][0]['value'] == 'secure_code_warrior_value':
+            ts_thread = payload.get("ts")
+            print("Entrou em secure_code_warrior_value")
+            slack_client.client.chat_postMessage(
+                text="TESTE SECURE CODE WARRIOR",
+                thread_ts=ts_thread,
+                channel=payload["channel"]
+            )
+
         if payload['actions'][0]['value'] == 'click_me_123':
             print("Entrou em click_me_123")
             modal = welcome.get_modal()

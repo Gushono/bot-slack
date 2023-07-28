@@ -129,8 +129,8 @@ def get_block_initial_message():
                             "text": "Outros",
                             "emoji": True
                         },
-                        "value": "secure_code_warrior_values",
-                        "action_id": "secure_code_warrior_actions"
+                        "value": "others_value",
+                        "action_id": "others_action"
                     }
                 ]
             },
