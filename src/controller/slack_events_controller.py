@@ -103,7 +103,7 @@ def echo_interactive():  # pragma: no cover
             slack_client.client.chat_postMessage(
                 text="TESTE SECURE CODE WARRIOR",
                 thread_ts=ts_thread,
-                # channel=payload["channel"]["id"]
+                channel=payload["channel"]["id"]
             )
 
         if payload['actions'][0]['value'] == 'click_me_123':
