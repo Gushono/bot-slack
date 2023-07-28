@@ -47,7 +47,7 @@ def handle_message(event_data):
     else:
         print(event)
         ts_thread = event.get("ts")
-        slack_client.client.chat_postMessage(ts_thread=ts_thread, channel=event["channel"], text=event['text'])
+        slack_client.client.chat_postMessage(thread_ts=ts_thread, channel=event["channel"], text=event['text'])
 
 
 # Example reaction emoji echo
