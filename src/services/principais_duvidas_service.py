@@ -154,3 +154,68 @@ def get_block_initial_message():
             }
         ]
     }
+
+
+def get_block_secure_code_warrior():
+    return {
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "Você selecionou as opções de secure code warriors! Segue abaixo as opções:"
+                }
+            },
+            {
+                "type": "divider"
+            },
+            {
+                "type": "actions",
+                "elements": [
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Link Cursos",
+                            "emoji": True
+                        },
+                        "value": "course_links_secure_code_warriors_value",
+                        "action_id": "course_links_secure_code_warriors_action"
+                    }
+                ]
+            },
+            {
+                "type": "actions",
+                "elements": [
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Problema Plataforma",
+                            "emoji": True
+                        },
+                        "value": "plataform_problem_secure_code_warriors_value",
+                        "action_id": "plataform_problem_secure_code_warriors_action"
+                    }
+                ]
+            },
+            {
+                "type": "actions",
+                "elements": [
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Licença plataforma",
+                            "emoji": True
+                        },
+                        "value": "plataform_license_secure_code_warriors_value",
+                        "action_id": "plataform_license_secure_code_warriors_actions"
+                    }
+                ]
+            },
+            {
+                "type": "divider"
+            }
+        ]
+    }
