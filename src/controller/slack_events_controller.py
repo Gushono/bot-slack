@@ -117,9 +117,8 @@ def principais_duvidas():
 def echo_interactive():  # pragma: no cover
     data = request.form
     payload = json.loads(data['payload'])
-
-    print("Esse é o payload: " + payload)
-
+    print("payload")
+    print(payload)
     user = payload["user"]
 
     slack_client = SlackClient()
