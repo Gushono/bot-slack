@@ -128,50 +128,55 @@ def echo_interactive():  # pragma: no cover
 
     welcome = WelcomeService(user['id'], user=user['id'], slack_client=slack_client.client)
 
-    if payload.get("view") is None or payload.get("view") is {}:
-        modal = welcome.get_modal()
-        slack_client.client.views_open(
-            trigger_id=payload['trigger_id'],
-            view=modal["view"],
+    if payload.get("actions") is not None:
+        print("Entrou em actions")
+        if payload['actions'][0]['value'] == 'click_me_123':
+            print("Entrou em click_me_123")
+            modal = welcome.get_modal()
+            slack_client.client.views_open(
+                trigger_id=payload['trigger_id'],
+                view=modal["view"],
 
-        )
-        return Response(), 200
+            )
+            return Response(), 200
 
-    if payload['view']['callback_id'] == 'button_ok':
-        subject, message = format_values_slack(payload['view']['state']['values'])
-        slack_client.client.chat_postMessage(
-            channel="#bot_duvidas",
-            blocks=[
-                {
-                    "type": "section",
-                    "text": {
-                        "type": "mrkdwn",
-                        "text": f"*O usuário: {user['username']} enviou a seguinte duvida:* \n"
+    if payload.get("view") is not None:
+
+        if payload['view']['callback_id'] == 'button_ok':
+            subject, message = format_values_slack(payload['view']['state']['values'])
+            slack_client.client.chat_postMessage(
+                channel="#bot_duvidas",
+                blocks=[
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f"*O usuário: {user['username']} enviou a seguinte duvida:* \n"
+                        }
+                    },
+                    {
+                        "type": "divider"
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f"> Subject: {subject.upper()}\n"
+                                    f"> Message: {message}"
+                        }
+
+                    },
+                    {
+                        "type": "divider"
                     }
-                },
-                {
-                    "type": "divider"
-                },
-                {
-                    "type": "section",
-                    "text": {
-                        "type": "mrkdwn",
-                        "text": f"> Subject: {subject.upper()}\n"
-                                f"> Message: {message}"
-                    }
+                ]
 
-                },
-                {
-                    "type": "divider"
-                }
-            ]
+            )
 
-        )
-
-        slack_client.client.chat_postMessage(
-            channel=user['id'],
-            text="A mensagem chegou para nossos analistas, em breve alguém te ajudará",
-        )
+            slack_client.client.chat_postMessage(
+                channel=user['id'],
+                text="A mensagem chegou para nossos analistas, em breve alguém te ajudará",
+            )
 
         return Response(), 200
 
