@@ -53,14 +53,14 @@ def handle_message(event_data):
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "Olá! 👋"
+                        "text": ":wave: Olá! Bem-vindo ao nosso canal! Estou aqui para ajudá-lo. :smiley:"
                     }
                 },
                 {
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "Se você tiver alguma dúvida, digite `/principais-duvidas` para obter ajuda imediata."
+                        "text": "Se você tiver alguma dúvida, digite `/principais-duvidas` para ver as perguntas e respostas mais frequentes."
                     }
                 },
                 {
@@ -72,7 +72,9 @@ def handle_message(event_data):
                                 "type": "plain_text",
                                 "text": "Ainda preciso de ajuda",
                                 "emoji": True
-                            }
+                            },
+                            "value": "click_me_123",
+                            "action_id": "actionId-0"
                         }
                     ]
                 }

@@ -25,8 +25,6 @@ class EnvironmentVariables(Singleton):
         if self.slack_token is None:
             self.slack_token = os.getenv("SLACK_TOKEN", "test")
 
-            # xoxb - 4590916338816 - 4560647416198 - I5LU9iyAb2YNityt8bEAG9ek
-
         return self.slack_token
 
 
