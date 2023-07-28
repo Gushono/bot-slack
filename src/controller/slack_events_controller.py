@@ -5,8 +5,7 @@ from slackeventsapi import SlackEventAdapter
 
 from src.client.slack_client import SlackClient
 from src.environment import env
-from src.services.principais_duvidas_service import build_markdown_text_for_principais_duvidas, define_answer_bot, \
-    send_welcome_message
+from src.services.principais_duvidas_service import build_markdown_text_for_principais_duvidas, send_welcome_message
 from src.services.slack_service import WelcomeService, SlackService
 
 slack_events_blueprint = Blueprint('slack_events', __name__)
@@ -30,28 +29,25 @@ def handle_mentions(event_data):
 
 
 # Example responder to greetings
-@slack_events_adapter.on("message")  # pragma: no cover
+@slack_events_adapter.on("message")
 def handle_message(event_data):
     slack_client = SlackClient()
 
-    message = event_data["event"]
-    user = message.get("user")
+    event = event_data["event"]
+    user = event.get("user")
 
     bot_id = slack_client.client.api_call("auth.test")["user_id"]
 
     if not user or user == bot_id:
         return
 
-    if message['text'].lower() == "start":
+    if event['text'].lower() == "start":
         send_welcome_message(f'@{user}', user=user, slack_client=slack_client.client)
         return
-
-    # If the incoming message contains "hi", then respond with a "Hello" message
-    answer = define_answer_bot(message['text'])
-    channel = message["channel"]
-
-    message = f" answer: {answer}"
-    slack_client.send_message(channel=channel, message=message)
+    else:
+        print(event)
+        ts_thread = event.get("ts")
+        slack_client.client.chat_postMessage(ts_thread=ts_thread, channel=event["channel"], text=event['text'])
 
 
 # Example reaction emoji echo
