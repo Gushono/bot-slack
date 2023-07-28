@@ -5,7 +5,8 @@ from slackeventsapi import SlackEventAdapter
 
 from src.client.slack_client import SlackClient
 from src.environment import env
-from src.services.principais_duvidas_service import build_markdown_text_for_principais_duvidas, send_welcome_message
+from src.services.principais_duvidas_service import build_markdown_text_for_principais_duvidas, send_welcome_message, \
+    get_block_initial_message
 from src.services.slack_service import WelcomeService, SlackService
 
 slack_events_blueprint = Blueprint('slack_events', __name__)
@@ -47,45 +48,13 @@ def handle_message(event_data):
     else:
         print(event)
 
-        blocks_to_send_when_has_doubt = {
-            "blocks": [
-                {
-                    "type": "section",
-                    "text": {
-                        "type": "mrkdwn",
-                        "text": ":wave: Olá! Bem-vindo ao nosso canal! Estou aqui para ajudá-lo. :smiley:"
-                    }
-                },
-                {
-                    "type": "section",
-                    "text": {
-                        "type": "mrkdwn",
-                        "text": "Se você tiver alguma dúvida, digite `/principais-duvidas` para ver as perguntas e respostas mais frequentes."
-                    }
-                },
-                {
-                    "type": "actions",
-                    "elements": [
-                        {
-                            "type": "button",
-                            "text": {
-                                "type": "plain_text",
-                                "text": "Ainda preciso de ajuda",
-                                "emoji": True
-                            },
-                            "value": "click_me_123",
-                            "action_id": "actionId-0"
-                        }
-                    ]
-                }
-            ]
-        }
+        initial_message = get_block_initial_message()
         ts_thread = event.get("ts")
         slack_client.client.chat_postMessage(
             thread_ts=ts_thread,
             channel=event["channel"],
             text=event['text'],
-            blocks=blocks_to_send_when_has_doubt['blocks']
+            blocks=initial_message['blocks']
         )
 
 
