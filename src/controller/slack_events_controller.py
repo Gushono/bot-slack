@@ -46,8 +46,45 @@ def handle_message(event_data):
         return
     else:
         print(event)
+
+        blocks_to_send_when_has_doubt = {
+            "blocks": [
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": "Olá! 👋"
+                    }
+                },
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": "Se você tiver alguma dúvida, digite `/principais-duvidas` para obter ajuda imediata."
+                    }
+                },
+                {
+                    "type": "actions",
+                    "elements": [
+                        {
+                            "type": "button",
+                            "text": {
+                                "type": "plain_text",
+                                "text": "Ainda preciso de ajuda",
+                                "emoji": True
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
         ts_thread = event.get("ts")
-        slack_client.client.chat_postMessage(thread_ts=ts_thread, channel=event["channel"], text=event['text'])
+        slack_client.client.chat_postMessage(
+            thread_ts=ts_thread,
+            channel=event["channel"],
+            text=event['text'],
+            blocks=blocks_to_send_when_has_doubt['blocks']
+        )
 
 
 # Example reaction emoji echo
