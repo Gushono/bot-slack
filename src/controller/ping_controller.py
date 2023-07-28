@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 @ping_blueprint.route("/ping")
 def main() -> str:
-    """Ping endpoint, used to know if the app is up."""
+    """Ping endpoint, used to know if the src is up."""
     newrelic.agent.ignore_transaction(flag=True)
 
     return "pong"

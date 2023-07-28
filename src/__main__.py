@@ -1,4 +1,4 @@
-"""Run flask app."""
+"""Run flask src."""
 
 # pylint: disable=wrong-import-position
 
@@ -6,7 +6,7 @@ import os
 
 import newrelic.agent
 
-from app import create_app
+from src import create_app
 
 # Initialize newrelic agent before importing anything else
 # The newrelic config file is hardcoded because we can't import anything before this :-(

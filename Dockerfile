@@ -1,6 +1,5 @@
-# Use the official Python image with version 3.10 as the base image
-FROM python:3.10
-
+# Use the official Python image with version 3.10 smallest possible image
+FROM python:3.10-slim
 # Set the working directory inside the container
 WORKDIR /app
 
@@ -17,8 +16,8 @@ RUN poetry config virtualenvs.create false && \
 # Copy the rest of the application code to the container
 COPY . .
 
-# Expose the port on which your Flask app runs (adjust the port if needed)
+# Expose the port on which your Flask src runs (adjust the port if needed)
 EXPOSE 8080
 
-# Specify the command to run your Flask app
-CMD ["flask", "run", "--port=8080"]
+# Specify the command to run your Flask src with uvicorn
+CMD ["python", "app.py"]

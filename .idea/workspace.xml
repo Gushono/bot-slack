@@ -5,7 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="225d9359-ffee-4f22-812a-261cad24dffa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/client/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/client/slack_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/slack_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/ping_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ping_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/slack_events_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/slack_events_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/enums/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/enums/qa_enum.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/qa_enum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/principais_duvidas_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/principais_duvidas_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/slack_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/slack_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_slash_commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_slash_commands.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +137,8 @@
       <updated>1690330840630</updated>
       <workItem from="1690330841897" duration="2931000" />
       <workItem from="1690532135000" duration="1109000" />
-      <workItem from="1690533247163" duration="324000" />
+      <workItem from="1690533247163" duration="898000" />
+      <workItem from="1690534320256" duration="1886000" />
     </task>
     <servers />
   </component>
@@ -131,17 +149,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/pass.py</url>
+          <url>file://$PROJECT_DIR$/src/pass.py</url>
           <line>4</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/s3.py</url>
+          <url>file://$PROJECT_DIR$/src/s3.py</url>
           <line>24</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/s3.py</url>
+          <url>file://$PROJECT_DIR$/src/s3.py</url>
           <line>25</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>

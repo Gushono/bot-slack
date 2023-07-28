@@ -3,15 +3,15 @@ import json
 from flask import Blueprint, request, Response
 from slackeventsapi import SlackEventAdapter
 
-from app.client.slack_client import SlackClient
-from app.environment import env
-from app.services.principais_duvidas_service import build_markdown_text_for_principais_duvidas, define_answer_bot, \
+from src.client.slack_client import SlackClient
+from src.environment import env
+from src.services.principais_duvidas_service import build_markdown_text_for_principais_duvidas, define_answer_bot, \
     send_welcome_message
-from app.services.slack_service import WelcomeService, SlackService
+from src.services.slack_service import WelcomeService, SlackService
 
 slack_events_blueprint = Blueprint('slack_events', __name__)
 
-# Our app's Slack Event Adapter for receiving actions via the Events API
+# Our src's Slack Event Adapter for receiving actions via the Events API
 slack_events_adapter = SlackEventAdapter(env.get_signing_secret(), "/slack/events", slack_events_blueprint)
 
 

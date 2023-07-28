@@ -1,6 +1,6 @@
 from slack import WebClient
 
-from app.environment import env
+from src.environment import env
 
 
 class SlackClient:

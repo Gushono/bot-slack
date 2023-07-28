@@ -3,7 +3,7 @@ from unittest import mock
 
 from flask import url_for
 
-from app.services.slack_service import SlackService
+from src.services.slack_service import SlackService
 
 
 @mock.patch.object(SlackService, "publish_message")

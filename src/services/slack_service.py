@@ -1,7 +1,7 @@
 import os
 from enum import Enum
 
-from app.client.slack_client import SlackClient
+from src.client.slack_client import SlackClient
 
 
 class EnumValuesSelectBoxSubject(Enum):

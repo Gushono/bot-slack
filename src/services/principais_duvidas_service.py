@@ -1,5 +1,5 @@
-from app.enums.qa_enum import EnumQuestions, EnumAnswers
-from app.services.slack_service import WelcomeService
+from src.enums.qa_enum import EnumQuestions, EnumAnswers
+from src.services.slack_service import WelcomeService
 
 
 def build_markdown_text_for_principais_duvidas():
