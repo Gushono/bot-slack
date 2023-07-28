@@ -18,7 +18,7 @@ RUN poetry config virtualenvs.create false && \
 COPY . .
 
 # Expose the port on which your Flask app runs (adjust the port if needed)
-EXPOSE 5000
+EXPOSE 8080
 
 # Specify the command to run your Flask app
-CMD ["python", "app.py"]
+CMD ["flask", "run", "--port=8080"]
