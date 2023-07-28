@@ -6,7 +6,7 @@ from slackeventsapi import SlackEventAdapter
 from src.client.slack_client import SlackClient
 from src.environment import env
 from src.services.principais_duvidas_service import build_markdown_text_for_principais_duvidas, send_welcome_message, \
-    get_block_initial_message, get_block_secure_code_warrior
+    get_block_initial_message, get_block_secure_code_warrior, get_blocks_links_secure_code_warriors
 from src.services.slack_service import WelcomeService, SlackService
 
 slack_events_blueprint = Blueprint('slack_events', __name__)
@@ -104,6 +104,15 @@ def echo_interactive():  # pragma: no cover
                 thread_ts=payload["message"]["thread_ts"],
                 channel=payload["channel"]["id"],
                 blocks=blocks_secure_code_warriors['blocks']
+            )
+
+        if payload['actions'][0]['value'] == 'course_links_secure_code_warriors_value':
+            print("Entrou em secure_code_warrior_value")
+            blocks_links_secure_code_warriors = get_blocks_links_secure_code_warriors()
+            slack_client.client.chat_postMessage(
+                thread_ts=payload["message"]["thread_ts"],
+                channel=payload["channel"]["id"],
+                blocks=blocks_links_secure_code_warriors['blocks']
             )
 
         if payload['actions'][0]['value'] == 'click_me_123':
