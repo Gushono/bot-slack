@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="225d9359-ffee-4f22-812a-261cad24dffa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/controller/slack_events_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/slack_events_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/principais_duvidas_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/principais_duvidas_service.py" afterDir="false" />
-    </list>
+    <list default="true" id="225d9359-ffee-4f22-812a-261cad24dffa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,7 +119,7 @@
       <workItem from="1690330841897" duration="2931000" />
       <workItem from="1690532135000" duration="1109000" />
       <workItem from="1690533247163" duration="898000" />
-      <workItem from="1690534320256" duration="7843000" />
+      <workItem from="1690534320256" duration="8294000" />
     </task>
     <servers />
   </component>
