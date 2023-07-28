@@ -118,6 +118,8 @@ def echo_interactive():  # pragma: no cover
     data = request.form
     payload = json.loads(data['payload'])
 
+    print("Esse é o payload: " + payload)
+
     user = payload["user"]
 
     slack_client = SlackClient()
@@ -126,6 +128,15 @@ def echo_interactive():  # pragma: no cover
         return Response(), 200
 
     welcome = WelcomeService(user['id'], user=user['id'], slack_client=slack_client.client)
+
+    if payload.get("view") is None or payload.get("view") is {}:
+        modal = welcome.get_modal()
+        slack_client.client.views_open(
+            trigger_id=payload['trigger_id'],
+            view=modal["view"],
+
+        )
+        return Response(), 200
 
     if payload['view']['callback_id'] == 'button_ok':
         subject, message = format_values_slack(payload['view']['state']['values'])
@@ -164,14 +175,6 @@ def echo_interactive():  # pragma: no cover
         )
 
         return Response(), 200
-
-    modal = welcome.get_modal()
-
-    slack_client.client.views_open(
-        trigger_id=payload['trigger_id'],
-        view=modal["view"],
-
-    )
 
     print(payload)
     return {"opa": "opa"}, 200
