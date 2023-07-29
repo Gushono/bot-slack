@@ -137,7 +137,7 @@ def echo_interactive():  # pragma: no cover
 
         if payload['actions'][0]['value'] == 'security_guardians_value':
             channel_name = "canal-guardians"
-            channel_link = f"https://slack.com/app_redirect?channel={channel_name}"
+            channel_link = f"slack://channel?team=T04HCSY9YQ0&id=C05KFKUHXSQ"
             slack_client.client.chat_postMessage(
                 thread_ts=payload["message"]["thread_ts"],
                 channel=payload["channel"]["id"],
