@@ -146,7 +146,6 @@ def get_block_initial_message():
                             "emoji": True
                         },
                         "value": "security_guardians_value",
-                        "url": "slack://channel?team=T04HCSY9YQ0&id=C05KFKUHXSQ",
                         "action_id": "security_guardians_action"
                     }
                 ]
