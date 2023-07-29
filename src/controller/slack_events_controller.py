@@ -136,10 +136,12 @@ def echo_interactive():  # pragma: no cover
             )
 
         if payload['actions'][0]['value'] == 'security_guardians_value':
+            channel_name = "canal-guardians"
+            channel_link = f"https://slack.com/app_redirect?channel={channel_name}"
             slack_client.client.chat_postMessage(
                 thread_ts=payload["message"]["thread_ts"],
                 channel=payload["channel"]["id"],
-                text="Acesse o canal #canal-guardians para mais informações",
+                text=f"Acesse o canal <{channel_link}|#{channel_name}> para mais informações",
             )
 
         if payload['actions'][0]['value'] == 'dashboard_value':
