@@ -45,12 +45,12 @@ def handle_message(event_data):
     if not user or user == bot_id:
         return
 
-    allowed_channels = ["geral"]
+    allowed_channels = ["C04GL827WKX"]
 
-    # if event.get("channel") is not None and event.get("channel") not in allowed_channels:
-    #     print(event.get("channel"))
-    #     print("Not allowed channel")
-    #     return Response(), 200
+    if event.get("channel") is not None and event.get("channel") not in allowed_channels:
+        print(event.get("channel"))
+        print("Not allowed channel")
+        return Response(), 200
     print("this is the event")
     print(event)
 
