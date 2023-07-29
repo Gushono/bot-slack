@@ -47,7 +47,8 @@ def handle_message(event_data):
 
     allowed_channels = ["geral"]
 
-    if event.get("channel") is not None and event.get("channel").get("name") not in allowed_channels:
+    if event.get("channel") is not None and event.get("channel") not in allowed_channels:
+        print(event.get("channel"))
         print("Not allowed channel")
         return Response(), 200
 
