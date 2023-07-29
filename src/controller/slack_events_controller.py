@@ -7,7 +7,7 @@ from src.client.slack_client import SlackClient
 from src.environment import env
 from src.services.principais_duvidas_service import build_markdown_text_for_principais_duvidas, send_welcome_message, \
     get_block_initial_message, get_block_secure_code_warrior, get_blocks_links_secure_code_warriors, \
-    get_blocks_send_messages_to_analysts, get_blocks_dashboard
+    get_blocks_send_messages_to_analysts, get_blocks_dashboard, get_direct_thread_link
 from src.services.slack_service import WelcomeService, SlackService
 
 slack_events_blueprint = Blueprint('slack_events', __name__)
@@ -140,10 +140,11 @@ def echo_interactive():  # pragma: no cover
             )
 
         if payload['actions'][0]['value'] == 'email_not_in_dashboard_value' or payload['actions'][0]['value'] == 'status_not_updated_value':
+            thread_link = get_direct_thread_link(payload)
             blocks_messages_specialist = get_blocks_send_messages_to_analysts(
                 user=payload["user"]["username"],
                 subject=payload['actions'][0]['value'],
-                message="Usuário solicitou ajuda no grupo a respeito do dashboard",
+                message="Usuário solicitou ajuda no grupo a respeito do dashboard, segue link da thread: " + thread_link,
             )
             slack_client.client.chat_postMessage(
                 channel="#bot_duvidas",

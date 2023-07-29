@@ -383,3 +383,15 @@ def get_blocks_send_messages_to_analysts(user: str, subject: str, message: str):
             }
         ]
     }
+
+
+def get_direct_thread_link(payload):
+    # Extract the channel ID and parent message timestamp from the payload
+    channel_id = payload["container"]["channel_id"]
+    parent_message_ts = payload["message"]["thread_ts"]
+
+    # Replace 'YOUR_SLACK_TEAM_DOMAIN' with your Slack team's domain
+    slack_team_domain = 'teste-gustavo'
+
+    link = f"https://{slack_team_domain}.slack.com/archives/{channel_id}/p{parent_message_ts.replace('.', '')}"
+    return link
