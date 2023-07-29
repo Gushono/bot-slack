@@ -94,6 +94,12 @@ def echo_interactive():  # pragma: no cover
     if not user:
         return Response(), 200
 
+    allowed_channels = ["geral"]
+
+    if payload.get("channel") is not None and payload.get("channel").get("name") not in allowed_channels:
+        print("Not allowed channel")
+        return Response(), 200
+
     welcome = WelcomeService(user['id'], user=user['id'], slack_client=slack_client.client)
 
     if payload.get("actions") is not None:
