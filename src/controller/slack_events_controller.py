@@ -55,7 +55,7 @@ def handle_message(event_data):
     print(event)
 
     if event['text'].lower() == "start":
-        send_welcome_message(f'@{user}', user=user, slack_client=slack_client.client)
+        send_welcome_message(f'@{user}', user=user, slack_client=slack_client.client, payload=event)
         return
     else:
         initial_message = get_block_initial_message()

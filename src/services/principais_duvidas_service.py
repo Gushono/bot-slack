@@ -1,3 +1,5 @@
+import json
+
 from src.enums.qa_enum import EnumQuestions, EnumAnswers
 from src.services.slack_service import WelcomeService
 
@@ -51,7 +53,7 @@ def define_answer_bot(message):  # pragma: no cover
         return "Nao sei o que fazer nao"
 
 
-def send_welcome_message(channel, user, slack_client):  # pragma: no cover
+def send_welcome_message(channel, user, slack_client, payload=None):  # pragma: no cover
     welcome_messages = {}
 
     welcome_service = WelcomeService(
@@ -61,7 +63,20 @@ def send_welcome_message(channel, user, slack_client):  # pragma: no cover
     )
 
     message = welcome_service.get_message()
-    response = slack_client.chat_postMessage(**message)
+    transform_dict_to_string = json.dumps(message)
+    slack_client.chat_postMessage(channel=channel, text=transform_dict_to_string)
+
+    # return {
+    #     "channel": self.channel,
+    #     "username": "Welcome Bot",
+    #     "icon_emoji": self.icon_emoji,
+    #     "blocks": [
+    #         self.START_TEXT,
+    #         self.DIVIDER,
+    #         *self._get_reaction_task(),
+    #     ],
+    # }
+    slack_client.chat_postMessage(**message)
 
     if channel not in welcome_messages:
         welcome_messages[channel] = {}
