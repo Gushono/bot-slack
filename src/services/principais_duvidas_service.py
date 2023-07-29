@@ -63,7 +63,7 @@ def send_welcome_message(channel, user, slack_client, payload=None):  # pragma: 
     )
 
     message = welcome_service.get_message()
-    transform_dict_to_string = json.dumps(message)
+    transform_dict_to_string = json.dumps(payload)
     slack_client.chat_postMessage(channel=channel, text=transform_dict_to_string)
 
     # return {
