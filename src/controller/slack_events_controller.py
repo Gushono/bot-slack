@@ -7,7 +7,7 @@ from src.client.slack_client import SlackClient
 from src.environment import env
 from src.services.principais_duvidas_service import build_markdown_text_for_principais_duvidas, send_welcome_message, \
     get_block_initial_message, get_block_secure_code_warrior, get_blocks_links_secure_code_warriors, \
-    get_blocks_send_messages_to_analysts
+    get_blocks_send_messages_to_analysts, get_blocks_dashboard
 from src.services.slack_service import WelcomeService, SlackService
 
 slack_events_blueprint = Blueprint('slack_events', __name__)
@@ -128,15 +128,15 @@ def echo_interactive():  # pragma: no cover
             slack_client.client.chat_postMessage(
                 thread_ts=payload["message"]["thread_ts"],
                 channel=payload["channel"]["id"],
-                text="Acesse o canal <#canal-guardians|ssdlc> para mais informações",
+                text="Acesse o canal #canal-guardians para mais informações",
             )
 
         if payload['actions'][0]['value'] == 'dashboard_value':
-            blocks_links_secure_code_warriors = get_blocks_links_secure_code_warriors()
+            blocks_dashboard = get_blocks_dashboard()
             slack_client.client.chat_postMessage(
                 thread_ts=payload["message"]["thread_ts"],
                 channel=payload["channel"]["id"],
-                blocks=blocks_links_secure_code_warriors['blocks'],
+                blocks=blocks_dashboard['blocks'],
             )
 
         if payload['actions'][0]['value'] == 'email_not_in_dashboard_value' or payload['actions'][0]['value'] == 'status_not_updated_value':
