@@ -47,10 +47,12 @@ def handle_message(event_data):
 
     allowed_channels = ["geral"]
 
-    if event.get("channel") is not None and event.get("channel") not in allowed_channels:
-        print(event.get("channel"))
-        print("Not allowed channel")
-        return Response(), 200
+    # if event.get("channel") is not None and event.get("channel") not in allowed_channels:
+    #     print(event.get("channel"))
+    #     print("Not allowed channel")
+    #     return Response(), 200
+    print("this is the event")
+    print(event)
 
     if event['text'].lower() == "start":
         send_welcome_message(f'@{user}', user=user, slack_client=slack_client.client)
@@ -148,7 +150,8 @@ def echo_interactive():  # pragma: no cover
                 blocks=blocks_dashboard['blocks'],
             )
 
-        if payload['actions'][0]['value'] == 'email_not_in_dashboard_value' or payload['actions'][0]['value'] == 'status_not_updated_value':
+        if payload['actions'][0]['value'] == 'email_not_in_dashboard_value' or payload['actions'][0][
+            'value'] == 'status_not_updated_value':
             thread_link = get_direct_thread_link(payload)
             blocks_messages_specialist = get_blocks_send_messages_to_analysts(
                 user=payload["user"]["username"],
