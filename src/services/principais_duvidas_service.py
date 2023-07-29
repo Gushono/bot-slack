@@ -210,6 +210,7 @@ def get_block_secure_code_warrior():
                             "emoji": True
                         },
                         "value": "plataform_license_secure_code_warriors_value",
+                        "url": "https://google.com",
                         "action_id": "plataform_license_secure_code_warriors_actions"
                     }
                 ]

@@ -114,6 +114,16 @@ def echo_interactive():  # pragma: no cover
                 channel=payload["channel"]["id"],
                 blocks=blocks_links_secure_code_warriors['blocks'],
             )
+        if payload['actions'][0]['value'] == 'plataform_problem_secure_code_warriors_value':
+            print("Entrou em secure_code_warrior_value")
+            md_faq = build_markdown_text_for_principais_duvidas()
+            slack_client.client.chat_postMessage(
+                thread_ts=payload["message"]["thread_ts"],
+                channel=payload["channel"]["id"],
+                blocks={
+                    "blocks": md_faq
+                },
+            )
 
         if payload['actions'][0]['value'] == 'click_me_123':
             print("Entrou em click_me_123")
