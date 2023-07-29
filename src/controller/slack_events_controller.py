@@ -38,10 +38,18 @@ def handle_message(event_data):
     event = event_data["event"]
     user = event.get("user")
 
+    print(event)
+
     bot_id = slack_client.client.api_call("auth.test")["user_id"]
 
     if not user or user == bot_id:
         return
+
+    allowed_channels = ["geral"]
+
+    if event.get("channel") is not None and event.get("channel").get("name") not in allowed_channels:
+        print("Not allowed channel")
+        return Response(), 200
 
     if event['text'].lower() == "start":
         send_welcome_message(f'@{user}', user=user, slack_client=slack_client.client)
@@ -92,12 +100,6 @@ def echo_interactive():  # pragma: no cover
     slack_client = SlackClient()
 
     if not user:
-        return Response(), 200
-
-    allowed_channels = ["geral"]
-
-    if payload.get("channel") is not None and payload.get("channel").get("name") not in allowed_channels:
-        print("Not allowed channel")
         return Response(), 200
 
     welcome = WelcomeService(user['id'], user=user['id'], slack_client=slack_client.client)
