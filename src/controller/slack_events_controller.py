@@ -112,8 +112,7 @@ def echo_interactive():  # pragma: no cover
             slack_client.client.chat_postMessage(
                 thread_ts=payload["message"]["thread_ts"],
                 channel=payload["channel"]["id"],
-                # blocks=blocks_links_secure_code_warriors['blocks'],
-                attachments=blocks_links_secure_code_warriors['attachments']
+                blocks=blocks_links_secure_code_warriors['blocks'],
             )
 
         if payload['actions'][0]['value'] == 'click_me_123':
