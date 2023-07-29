@@ -115,7 +115,38 @@ def get_block_initial_message():
                             "emoji": True
                         },
                         "value": "ssdlc_value",
+                        "url": "https://www.google.com",
                         "action_id": "ssdlc_action"
+                    }
+                ]
+            },
+            {
+                "type": "actions",
+                "elements": [
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Security Guardians",
+                            "emoji": True
+                        },
+                        "value": "security_guardians_value",
+                        "action_id": "security_guardians_action"
+                    }
+                ]
+            },
+            {
+                "type": "actions",
+                "elements": [
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Dashboard",
+                            "emoji": True
+                        },
+                        "value": "dashboard_value",
+                        "action_id": "dashboard_action"
                     }
                 ]
             },
@@ -269,6 +300,83 @@ def get_blocks_links_secure_code_warriors():
                     "image_url": "https://api.slack.com/img/blocks/bkb_template_images/tripAgent_1.png",
                     "alt_text": "Windsor Court Hotel thumbnail"
                 }
+            },
+            {
+                "type": "divider"
+            }
+        ]
+    }
+
+
+def get_blocks_dashboard():
+    return {
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "Você selecionou as opções de dashboard! Segue abaixo as opções:"
+                }
+            },
+            {
+                "type": "divider"
+            },
+            {
+                "type": "actions",
+                "elements": [
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Meu email não está no dashboard",
+                            "emoji": True
+                        },
+                        "value": "email_not_in_dashboard_value",
+                        "action_id": "email_not_in_dashboard_action"
+                    }
+                ]
+            },
+            {
+                "type": "actions",
+                "elements": [
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Status de capacitado está desatualizado",
+                            "emoji": True
+                        },
+                        "value": "status_not_updated_value",
+                        "action_id": "status_not_updated_action"
+                    }
+                ]
+            },
+
+        ]
+    }
+
+
+def get_blocks_send_messages_to_analysts(user: str, subject: str, message: str):
+    return {
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": f"*O usuário: {user} enviou a seguinte duvida:* \n"
+                }
+            },
+            {
+                "type": "divider"
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": f"> Subject: {subject.upper()}\n"
+                            f"> Message: {message}"
+                }
+
             },
             {
                 "type": "divider"
