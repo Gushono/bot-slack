@@ -13,6 +13,7 @@ from src.services.slack_service import SlackService
 
 strategies_actions = {
     'secure_code_warrior_value': SecureCodeWarriorStrategy(),
+    'ssdlc_value': SSDLCStrategy(),
     'course_links_secure_code_warriors_value': CourseLinksSecureCodeWarriorsStrategy(),
     'platform_problem_secure_code_warriors_value': PlatformProblemSecureCodeWarriorsStrategy(),
     'security_guardians_value': SecurityGuardiansStrategy(),

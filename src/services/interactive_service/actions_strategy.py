@@ -22,6 +22,12 @@ class SecureCodeWarriorStrategy(BaseStrategy):
         return response
 
 
+class SSDLCStrategy(BaseStrategy):
+    def execute(self, payload: dict, slack_service: SlackService):
+        # Acknowledge the message
+        return True
+
+
 class CourseLinksSecureCodeWarriorsStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
         blocks_links_secure_code_warriors = get_blocks_links_secure_code_warriors()
