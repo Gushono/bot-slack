@@ -26,7 +26,7 @@ strategies_actions = {
 
 def handle_actions(payload: dict):
     slack_service = SlackService(slack_client=SlackClient())
-    action_id = payload['actions'][0]['action_id']
+    action_id = payload['actions'][0]['value']
 
     strategy = strategies_actions.get(action_id)
 
