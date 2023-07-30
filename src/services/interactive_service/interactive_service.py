@@ -3,10 +3,10 @@ from src.client.slack_client import SlackClient
 from src.services.interactive_service.actions_strategy import (
     SecureCodeWarriorStrategy,
     CourseLinksSecureCodeWarriorsStrategy,
-    PlataformProblemSecureCodeWarriorsStrategy,
+    PlatformProblemSecureCodeWarriorsStrategy,
     SecurityGuardiansStrategy,
     DashboardStrategy,
-    EmailStatusUpdateStrategy,
+    EmailStatusUpdateStrategy, PlatformLicenseSecureCodeWarriorsStrategy,
     # ClickMeStrategy
 )
 from src.services.slack_service import SlackService
@@ -14,11 +14,12 @@ from src.services.slack_service import SlackService
 strategies_actions = {
     'secure_code_warrior_value': SecureCodeWarriorStrategy(),
     'course_links_secure_code_warriors_value': CourseLinksSecureCodeWarriorsStrategy(),
-    'plataform_problem_secure_code_warriors_value': PlataformProblemSecureCodeWarriorsStrategy(),
+    'platform_problem_secure_code_warriors_value': PlatformProblemSecureCodeWarriorsStrategy(),
     'security_guardians_value': SecurityGuardiansStrategy(),
     'dashboard_value': DashboardStrategy(),
     'email_not_in_dashboard_value': EmailStatusUpdateStrategy(),
     'status_not_updated_value': EmailStatusUpdateStrategy(),
+    'platform_license_secure_code_warriors_value': PlatformLicenseSecureCodeWarriorsStrategy(),
     # 'click_me_123': ClickMeStrategy(),
     # Add more strategies as needed...
 }

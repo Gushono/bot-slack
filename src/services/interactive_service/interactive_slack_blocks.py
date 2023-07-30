@@ -192,8 +192,8 @@ def get_block_secure_code_warrior():
                             "text": "Problema Plataforma",
                             "emoji": True
                         },
-                        "value": "plataform_problem_secure_code_warriors_value",
-                        "action_id": "plataform_problem_secure_code_warriors_action"
+                        "value": "platform_problem_secure_code_warriors_value",
+                        "action_id": "platform_problem_secure_code_warriors_action"
                     }
                 ]
             },

@@ -35,7 +35,7 @@ class CourseLinksSecureCodeWarriorsStrategy(BaseStrategy):
         return response
 
 
-class PlataformProblemSecureCodeWarriorsStrategy(BaseStrategy):
+class PlatformProblemSecureCodeWarriorsStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
         md_faq = build_markdown_text_for_principais_duvidas()
         response = slack_service.send_slack_message(
@@ -100,6 +100,11 @@ class EmailStatusUpdateStrategy(BaseStrategy):
 
         return response_message_to_specialist
 
+
+class PlatformLicenseSecureCodeWarriorsStrategy(BaseStrategy):
+    def execute(self, payload: dict, slack_service: SlackService):
+        # Acknowledge the user
+        return True
 
 # class ClickMeStrategy(BaseStrategy):
 #     def execute(self, payload: dict, slack_service: SlackService):
