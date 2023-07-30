@@ -10,6 +10,39 @@ class EnumValuesSelectBoxSubject(Enum):
 
 
 class SlackService:
+    def __init__(self, slack_client: SlackClient = None):
+        self._slack_client = slack_client or SlackClient()
+
+    def send_slack_message(
+            self,
+            channel: str = None,
+            text: str = None,
+            blocks: str = None,
+            thread_ts: str = None
+    ):
+        built_params = {}
+        if channel:
+            built_params["channel"] = channel
+        if text:
+            built_params["text"] = text
+        if blocks:
+            built_params["blocks"] = blocks
+        if thread_ts:
+            built_params["thread_ts"] = thread_ts
+
+        return self._slack_client.send_message(built_params)
+
+    def view_open(self, trigger_id: str = None, view: dict = None):
+        built_params = {}
+        if trigger_id:
+            built_params["trigger_id"] = trigger_id
+        if view:
+            built_params["view"] = view
+
+        return self._slack_client.view_open(built_params)
+
+
+class SlackService1:
     def __init__(self, slack_client: SlackClient, channel=None):
         self.slack_client = slack_client
         self.channel = f"@{channel}" or "geral"
