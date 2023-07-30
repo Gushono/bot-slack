@@ -6,7 +6,7 @@ from src.services.interactive_service.actions_strategy import (
     PlatformProblemSecureCodeWarriorsStrategy,
     SecurityGuardiansStrategy,
     DashboardStrategy,
-    EmailStatusUpdateStrategy, PlatformLicenseSecureCodeWarriorsStrategy,
+    EmailStatusUpdateStrategy, PlatformLicenseSecureCodeWarriorsStrategy, SSDLCStrategy,
     # ClickMeStrategy
 )
 from src.services.slack_service import SlackService
