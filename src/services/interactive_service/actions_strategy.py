@@ -13,7 +13,7 @@ class SecureCodeWarriorStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
         blocks_secure_code_warriors = get_block_secure_code_warrior()
 
-        response = slack_service.send_slack_message_with_blocks_and_thread(
+        response = slack_service.send_slack_message(
             blocks=blocks_secure_code_warriors['blocks'],
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"]
@@ -26,7 +26,7 @@ class CourseLinksSecureCodeWarriorsStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
         blocks_links_secure_code_warriors = get_blocks_links_secure_code_warriors()
 
-        response = slack_service.send_slack_message_with_blocks_and_thread(
+        response = slack_service.send_slack_message(
             blocks=blocks_links_secure_code_warriors['blocks'],
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"]
@@ -38,7 +38,7 @@ class CourseLinksSecureCodeWarriorsStrategy(BaseStrategy):
 class PlataformProblemSecureCodeWarriorsStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
         md_faq = build_markdown_text_for_principais_duvidas()
-        response = slack_service.send_slack_message_with_blocks_and_thread(
+        response = slack_service.send_slack_message(
             blocks=md_faq,
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"]
@@ -64,7 +64,7 @@ class DashboardStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
         blocks_dashboard = get_blocks_dashboard()
 
-        response = slack_service.send_slack_message_with_blocks_and_thread(
+        response = slack_service.send_slack_message(
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"],
             blocks=blocks_dashboard['blocks'],

@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="225d9359-ffee-4f22-812a-261cad24dffa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/services/interactive_service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/interactive_service/actions_strategy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/interactive_service/interactive_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/interactive_service/interactive_slack_blocks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/interactive_service/views_strategy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/slack_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/slack_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/slack_events_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/slack_events_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/principais_duvidas_service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/slack_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/slack_service.py" afterDir="false" />
-    </list>
+    <list default="true" id="225d9359-ffee-4f22-812a-261cad24dffa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
