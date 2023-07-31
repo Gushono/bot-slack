@@ -6,7 +6,7 @@ from src.services.slack_service import SlackService
 class HomeStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
         home_page = get_home_page(payload.get("user"))
-        response = slack_service._slack_client.views_publish(
+        response = slack_service._slack_client.client.views_publish(
             **home_page
         )
 
