@@ -192,8 +192,8 @@ def get_block_secure_code_warrior():
                             "text": "Problema Plataforma",
                             "emoji": True
                         },
-                        "value": "platform_license_secure_code_warriors_value",
-                        "action_id": "platform_license_secure_code_warriors_action"
+                        "value": "platform_problem_secure_code_warriors_value",
+                        "action_id": "platform_problem_secure_code_warriors_action"
                     }
                 ]
             },
@@ -207,9 +207,9 @@ def get_block_secure_code_warrior():
                             "text": "Licença plataforma",
                             "emoji": True
                         },
-                        "value": "plataform_license_secure_code_warriors_value",
+                        "value": "platform_license_secure_code_warriors_value",
                         "url": "https://google.com",
-                        "action_id": "plataform_license_secure_code_warriors_actions"
+                        "action_id": "platform_license_secure_code_warriors_actions"
                     }
                 ]
             },

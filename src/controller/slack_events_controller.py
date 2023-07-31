@@ -7,7 +7,7 @@ from src.client.slack_client import SlackClient
 from src.environment import env
 from src.services.interactive_service.interactive_service import handle_actions, handle_view_flow
 from src.services.interactive_service.interactive_slack_blocks import get_block_initial_message
-from src.services.slack_service import WelcomeService, SlackService
+from src.services.slack_service import WelcomeService
 
 slack_events_blueprint = Blueprint('slack_events', __name__)
 
@@ -67,30 +67,6 @@ def handle_message(event_data):
         text=event['text'],
         blocks=initial_message['blocks']
     )
-
-
-# Example reaction emoji echo
-@slack_events_adapter.on("reaction_added")  # pragma: no cover
-def reaction_added(event_data):
-    slack_client = SlackClient()
-    event = event_data["event"]
-    emoji = event["reaction"]
-    channel = event["item"]["channel"]
-    text = ":%s:" % emoji
-    slack_client.send_message(channel=channel, message=text)
-
-
-@slack_events_blueprint.route("/principais-duvidas", methods=["POST"])
-def principais_duvidas():
-    data = request.form
-    user = data['user_id']
-
-    slack_service = SlackService(SlackClient(), channel=user)
-
-    faq_messages = build_markdown_text_for_principais_duvidas()
-    slack_service.publish_message(faq_messages)
-
-    return Response(), 200
 
 
 @slack_events_blueprint.route("/interactive-endpoint", methods=["POST"])
