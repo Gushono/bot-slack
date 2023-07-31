@@ -208,7 +208,7 @@ def get_block_secure_code_warrior():
                             "emoji": True
                         },
                         "value": "platform_license_secure_code_warriors_value",
-                        "url": "https://google.com",
+                        "url": "https://meli.workplace.com/groups/539467037029524/permalink/1076399480002941/",
                         "action_id": "platform_license_secure_code_warriors_actions"
                     }
                 ]
