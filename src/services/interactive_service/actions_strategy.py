@@ -29,7 +29,7 @@ class SecureCodeWarriorStrategy(BaseStrategy):
 class SSDLCStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
         # Acknowledge the message
-        link_ssdlc = "https://google.com.br"
+        link_ssdlc = "https://learninghub-int.mercadolibre.com/courses/course-v1:it_prod+S-SDLC+2023_v2/course/"
         response = slack_service.send_slack_message(
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"],
@@ -120,10 +120,10 @@ class EmailStatusUpdateStrategy(BaseStrategy):
 
 class PlatformLicenseSecureCodeWarriorsStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
-        link_workspace = "https://google.com.br"
+        workplace_link = "https://meli.workplace.com/groups/539467037029524/permalink/1076399480002941/"
         response = slack_service.send_slack_message(
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"],
-            text=f"Você foi redirecionado para o workplace <{link_workspace}|Workplace> para mais informações.",
+            text=f"Você foi redirecionado para o workplace <{workplace_link}|Workplace> para mais informações.",
         )
         return response

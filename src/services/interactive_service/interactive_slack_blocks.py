@@ -82,7 +82,7 @@ def get_block_initial_message():
                             "emoji": True
                         },
                         "value": "ssdlc_value",
-                        "url": "https://www.google.com",
+                        "url": "https://learninghub-int.mercadolibre.com/courses/course-v1:it_prod+S-SDLC+2023_v2/course/",
                         "action_id": "ssdlc_action"
                     }
                 ]
@@ -230,12 +230,7 @@ def get_blocks_links_secure_code_warriors():
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "*<fakeLink.toHotelPage.com|MELI TOP 5 - BACKEND>*\n★★★★★\nRated: 10.0 - Excellent"
-                },
-                "accessory": {
-                    "type": "image",
-                    "image_url": "https://api.slack.com/img/blocks/bkb_template_images/tripAgent_1.png",
-                    "alt_text": "Meli top 5 backend"
+                    "text": "*<https://portal.securecodewarrior.com/#/courses/course-list/fb42f853-8bc4-414e-941c-b58ddd6d87f0|MELI Top 5 Backend / Machine Learning (Recomendado)>*"
                 }
             },
             {
@@ -245,12 +240,7 @@ def get_blocks_links_secure_code_warriors():
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "*<fakeLink.toHotelPage.com|MELI TOP 5 - FRONTEND>*\n★★★★★\nRated: 10.0 - Excellent"
-                },
-                "accessory": {
-                    "type": "image",
-                    "image_url": "https://api.slack.com/img/blocks/bkb_template_images/tripAgent_1.png",
-                    "alt_text": "Meli top 5 frontend"
+                    "text": "*<https://portal.securecodewarrior.com/#/courses/course-list/a1bcb123-6c47-468f-9983-5321ea36abd9|MELI Top 5 Frontend (Recomendado)>*"
                 }
             },
             {
@@ -260,16 +250,18 @@ def get_blocks_links_secure_code_warriors():
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "*<fakeLink.toHotelPage.com|MELI TOP 5 - MOBILE>*\n★★★★★\nRated: 10.0 - Excellent"
-                },
-                "accessory": {
-                    "type": "image",
-                    "image_url": "https://api.slack.com/img/blocks/bkb_template_images/tripAgent_1.png",
-                    "alt_text": "Windsor Court Hotel thumbnail"
+                    "text": "*<https://portal.securecodewarrior.com/#/courses/course-list/0f8343e9-23e5-4db1-87c2-747ded0a3f92|MELI Top 5 Mobile (Recomendado)>*"
                 }
             },
             {
                 "type": "divider"
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "*<https://portal.securecodewarrior.com/#/courses/course-list/ef7ba068-fef0-47d8-87f2-6fd0116c082d|MELI Top 4 Data Science / FDA (Recomendado)>*"
+                }
             }
         ]
     }
