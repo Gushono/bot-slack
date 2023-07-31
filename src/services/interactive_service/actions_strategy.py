@@ -1,6 +1,10 @@
-from src.services.interactive_service.interactive_slack_blocks import get_blocks_send_messages_to_analysts, \
-    get_direct_thread_link, get_blocks_dashboard, get_block_secure_code_warrior, get_blocks_links_secure_code_warriors, \
+from src.services.interactive_service.interactive_slack_blocks import (
+    get_blocks_send_messages_to_analysts, get_direct_thread_link,
+    get_blocks_dashboard,
+    get_block_secure_code_warrior,
+    get_blocks_links_secure_code_warriors,
     build_markdown_text_for_principais_duvidas
+)
 from src.services.slack_service import SlackService
 
 
@@ -25,7 +29,14 @@ class SecureCodeWarriorStrategy(BaseStrategy):
 class SSDLCStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
         # Acknowledge the message
-        return True
+        link_ssdlc = "google.com.br"
+        response = slack_service.send_slack_message(
+            thread_ts=payload["message"]["thread_ts"],
+            channel=payload["channel"]["id"],
+            text=f"Você foi redirecionado para o curso <{link_ssdlc}|SSDLC>.",
+        )
+
+        return response
 
 
 class CourseLinksSecureCodeWarriorsStrategy(BaseStrategy):
@@ -109,13 +120,10 @@ class EmailStatusUpdateStrategy(BaseStrategy):
 
 class PlatformLicenseSecureCodeWarriorsStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
-        # Acknowledge the user
-        return True
-
-# class ClickMeStrategy(BaseStrategy):
-#     def execute(self, payload: dict, slack_service: SlackService):
-#         modal = welcome.get_modal()
-#         slack_client.client.views_open(
-#             trigger_id=payload['trigger_id'],
-#             view=modal["view"],
-#         )
+        link_workspace = "google.com.br"
+        response = slack_service.send_slack_message(
+            thread_ts=payload["message"]["thread_ts"],
+            channel=payload["channel"]["id"],
+            text=f"Você foi redirecionado para o workplace <{link_workspace}|Workplace> para mais informações.",
+        )
+        return response
