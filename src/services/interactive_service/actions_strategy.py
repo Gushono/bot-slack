@@ -29,7 +29,7 @@ class SecureCodeWarriorStrategy(BaseStrategy):
 class SSDLCStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
         # Acknowledge the message
-        link_ssdlc = "google.com.br"
+        link_ssdlc = "https://google.com.br"
         response = slack_service.send_slack_message(
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"],
@@ -120,7 +120,7 @@ class EmailStatusUpdateStrategy(BaseStrategy):
 
 class PlatformLicenseSecureCodeWarriorsStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
-        link_workspace = "google.com.br"
+        link_workspace = "https://google.com.br"
         response = slack_service.send_slack_message(
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"],
