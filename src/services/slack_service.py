@@ -174,33 +174,20 @@ class WelcomeService:
             "user_id": self.user,
             "view": {
                 "type": "home",
-
                 "blocks": [
                     {
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": "Olá, tudo bem? :wave: \n Sou o bot do WebSec e estou aqui para te "
-                                    "auxiliar com seus cursos!! . :robot_face:"
+                            "text": "Olá, tudo bem? :wave:\n\n Sou o Bot do time de Developer Security Education :bot: - WebSec e estou aqui para te ajudar com suas principais dúvidas/problemas sobre as capacitações de Segurança de aplicações! :logo-dse: "
                         }
                     },
                     {
                         "type": "section",
                         "text": {
-                            "type": "mrkdwn",
-                            "text": "*1️⃣ Use `/principais-duvidas` comando*. Digite `/principais-duvidas` "
-                                    "que te enviaremos as respostas para as duvidas mais comuns"
+                            "type": "plain_text",
+                            "text": "Você pode interagir com as seguintes opções:"
                         }
-                    },
-                    {
-                        "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": "*2️⃣ Ainda não encontrou sua resposta?* Clique no botão abaixo e escreva sua pergunta"
-                        }
-                    },
-                    {
-                        "type": "divider"
                     },
                     {
                         "type": "actions",
@@ -209,16 +196,53 @@ class WelcomeService:
                                 "type": "button",
                                 "text": {
                                     "type": "plain_text",
-                                    "text": "Abrir modal",
+                                    "text": "Meu status de capacitação",
                                     "emoji": True
                                 },
-                                "value": "click_me_123",
-                                "action_id": "actionId-0"
+                                "value": "create_task"
+                            },
+                            {
+                                "type": "button",
+                                "text": {
+                                    "type": "plain_text",
+                                    "text": "Link dashboard",
+                                    "emoji": True
+                                },
+                                "value": "create_project"
                             }
                         ]
                     },
+                    {
+                        "type": "context",
+                        "elements": [
+                            {
+                                "type": "image",
+                                "image_url": "https://api.slack.com/img/blocks/bkb_template_images/placeholder.png",
+                                "alt_text": "placeholder"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": "*Nossos canais*"
+                        }
+                    },
+                    {
+                        "type": "divider"
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": "<fakelink.toChannel.com|*#guardians*>\nGuardians é o canal onde voce pode tirar duvidas... "
+                        }
+                    },
+                    {
+                        "type": "divider"
+                    }
                 ]
-
             }
 
         }

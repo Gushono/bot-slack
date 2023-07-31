@@ -1,4 +1,4 @@
-from src.services.interactive_service.interactive_slack_blocks import (
+from src.services.interactive_service.actions_slack_blocks import (
     get_blocks_send_messages_to_analysts, get_direct_thread_link,
     get_blocks_dashboard,
     get_block_secure_code_warrior,

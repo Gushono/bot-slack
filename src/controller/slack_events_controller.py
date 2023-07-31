@@ -5,9 +5,10 @@ from slackeventsapi import SlackEventAdapter
 
 from src.client.slack_client import SlackClient
 from src.environment import env
+from src.services.interactive_service.actions_slack_blocks import get_block_initial_message
 from src.services.interactive_service.interactive_service import handle_actions, handle_view_flow
-from src.services.interactive_service.interactive_slack_blocks import get_block_initial_message
-from src.services.slack_service import WelcomeService
+from src.services.interactive_service.views_strategy import HomeStrategy
+from src.services.slack_service import SlackService
 
 slack_events_blueprint = Blueprint('slack_events', __name__)
 
@@ -133,19 +134,10 @@ def echo_interactive():  # pragma: no cover
 def app_home_openned(event_data):  # pragma: no cover
     print(event_data)
     message = event_data["event"]
-    # channel = message["channel"]
-    user = message["user"]
 
-    slack_client = SlackClient()
+    response = HomeStrategy().execute(payload=message, slack_service=SlackService())
 
-    welcome = WelcomeService(user, user=user, slack_client=slack_client.client)
-    home_page = welcome.get_home_page()
-
-    slack_client.client.views_publish(
-        **home_page
-    )
-
-    return Response(home_page), 200
+    return Response(response), 200
 
 
 # Error events
