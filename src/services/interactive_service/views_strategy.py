@@ -7,7 +7,7 @@ class HomeStrategy(BaseStrategy):
     def execute(self, payload: dict, slack_service: SlackService):
         home_page = get_home_page()
         response = slack_service.views_publish(
-            user_id=payload.get("user_id"),
+            user_id=payload["user"],
             view=home_page["view"]
         )
 
