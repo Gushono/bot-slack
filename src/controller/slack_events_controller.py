@@ -131,7 +131,7 @@ def echo_interactive():  # pragma: no cover
 
 
 @slack_events_adapter.on("app_home_opened")
-def app_home_openned(event_data):  # pragma: no cover
+def app_home_openned(event_data):
     print(event_data)
     message = event_data["event"]
 

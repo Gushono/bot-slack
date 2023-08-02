@@ -18,3 +18,7 @@ class SlackClient:
     def view_open(self, params: dict):
         response = self.client.views_open(**params)
         return response
+
+    def views_publish(self, params: dict):
+        response = self.client.views_publish(**params)
+        return response

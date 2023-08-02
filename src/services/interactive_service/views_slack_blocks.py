@@ -1,10 +1,5 @@
-import os
-
-
-def get_home_page(user):
+def get_home_page():
     return {
-        "token": os.getenv("SLACK_TOKEN"),
-        "user_id": user,
         "view": {
             "type": "home",
             "blocks": [

@@ -41,6 +41,15 @@ class SlackService:
 
         return self._slack_client.view_open(built_params)
 
+    def views_publish(self, user_id: str = None, view: dict = None):
+        built_params = {}
+        if user_id:
+            built_params["user_id"] = user_id
+        if view:
+            built_params["view"] = view
+
+        return self._slack_client.views_publish(built_params)
+
 
 class SlackService1:
     def __init__(self, slack_client: SlackClient, channel=None):
