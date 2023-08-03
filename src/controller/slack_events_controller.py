@@ -44,7 +44,13 @@ def handle_slack_events():
         handler = events_handlers.get(event_type)
 
         if not handler:
-            raise ValueError(f"Handler for event {event_type} not implemented.")
+            event = data["event"]
+            slack_service.send_slack_message(
+                channel="C04GL827WKX",
+                text=f"This is the event not implemented: {json.dumps(event)}",
+            )
+
+            return Response(), 200
 
         user = data["event"].get("user")
 
