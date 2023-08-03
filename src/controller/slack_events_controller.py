@@ -39,8 +39,19 @@ def handle_slack_events():
     slack_service = SlackService()
 
     bot_id = slack_service._slack_client.client.api_call("auth.test")["user_id"]
+
     event_type = data.get("type")
     if "event" in data and "text" in data["event"]:
+
+        user = data["event"].get("user")
+        if not user or user == bot_id:
+            return Response(), 200
+
+        slack_service.send_slack_message(
+            channel="C04GL827WKX",
+            text=f"This is the FULL PAYLOAD OUT OF DATA: {json.dumps(data)}",
+        )
+
         handler = events_handlers.get(event_type)
 
         if not handler:
@@ -50,12 +61,7 @@ def handle_slack_events():
                 text=f"This is the event not implemented: {json.dumps(event)}",
             )
 
-            return Response(), 200
-
-        user = data["event"].get("user")
-
-        if not user or user == bot_id:
-            return Response(), 200
+            return jsonify()
 
         event = data["event"]
         slack_service.send_slack_message(
