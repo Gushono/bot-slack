@@ -10,7 +10,21 @@ from src.services.utils import BaseStrategy
 
 
 class SecureCodeWarriorStrategy(BaseStrategy):
+    """
+    Strategy for handling secure code warrior-related interactions.
+    """
+
     def execute(self, payload: dict, slack_service: SlackService):
+        """
+        Execute the strategy for secure code warrior interactions.
+
+        Args:
+            payload (dict): The payload containing information about the interaction.
+            slack_service (SlackService): The SlackService instance for API interaction.
+
+        Returns:
+            dict: The API response.
+        """
         blocks_secure_code_warriors = get_block_secure_code_warrior()
 
         response = slack_service.send_slack_message(
@@ -23,20 +37,49 @@ class SecureCodeWarriorStrategy(BaseStrategy):
 
 
 class SSDLCStrategy(BaseStrategy):
+    """
+    Strategy for handling SSDLC-related interactions.
+    """
+
+    COURSE_LINK = "https://learninghub-int.mercadolibre.com/courses/course-v1:it_prod+S-SDLC+2023_v2/course/"
+    COURSE_NAME = "SSDLC"
+
     def execute(self, payload: dict, slack_service: SlackService):
-        # Acknowledge the message
-        link_ssdlc = "https://learninghub-int.mercadolibre.com/courses/course-v1:it_prod+S-SDLC+2023_v2/course/"
+        """
+        Execute the strategy for handling SSDLC interactions.
+
+        Args:
+            payload (dict): The payload containing information about the interaction.
+            slack_service (SlackService): The SlackService instance for API interaction.
+
+        Returns:
+            dict: The API response.
+        """
         response = slack_service.send_slack_message(
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"],
-            text=f"Você foi redirecionado para o curso <{link_ssdlc}|SSDLC>.",
+            text=f"Você foi redirecionado para o curso <{self.COURSE_LINK}|{self.COURSE_NAME}>.",
         )
 
         return response
 
 
 class CourseLinksSecureCodeWarriorsStrategy(BaseStrategy):
+    """
+    Strategy for handling course links for Secure Code Warriors interactions.
+    """
+
     def execute(self, payload: dict, slack_service: SlackService):
+        """
+        Execute the strategy for handling course links for Secure Code Warriors interactions.
+
+        Args:
+            payload (dict): The payload containing information about the interaction.
+            slack_service (SlackService): The SlackService instance for API interaction.
+
+        Returns:
+            dict: The API response.
+        """
         blocks_links_secure_code_warriors = get_blocks_links_secure_code_warriors()
 
         response = slack_service.send_slack_message(
@@ -49,7 +92,21 @@ class CourseLinksSecureCodeWarriorsStrategy(BaseStrategy):
 
 
 class PlatformProblemSecureCodeWarriorsStrategy(BaseStrategy):
+    """
+    Strategy for handling platform problem inquiries related to Secure Code Warriors interactions.
+    """
+
     def execute(self, payload: dict, slack_service: SlackService):
+        """
+        Execute the strategy for handling platform problem inquiries for Secure Code Warriors interactions.
+
+        Args:
+            payload (dict): The payload containing information about the interaction.
+            slack_service (SlackService): The SlackService instance for API interaction.
+
+        Returns:
+            dict: The API response.
+        """
         md_faq = build_markdown_text_for_principais_duvidas()
         response = slack_service.send_slack_message(
             blocks=md_faq,
@@ -61,22 +118,53 @@ class PlatformProblemSecureCodeWarriorsStrategy(BaseStrategy):
 
 
 class SecurityGuardiansStrategy(BaseStrategy):
+    """
+    Strategy for providing information about the Security Guardians channel.
+    """
+
+    TEAM_ID = "T04HCSY9YQ0"
+    CHANNEL_ID = "C05KFKUHXSQ"
+    CHANNEL_LINK = f"slack://channel?team={TEAM_ID}&id={CHANNEL_ID}"
+    CHANNEL_NAME = "canal-guardians"
+
     def execute(self, payload: dict, slack_service: SlackService):
-        channel_name = "canal-guardians"
-        channel_link = f"slack://channel?team=T04HCSY9YQ0&id=C05KFKUHXSQ"
+        """
+        Execute the strategy for providing information about the Security Guardians channel.
+
+        Args:
+            payload (dict): The payload containing information about the interaction.
+            slack_service (SlackService): The SlackService instance for API interaction.
+
+        Returns:
+            dict: The API response.
+        """
+        text = f"Acesse o canal <{self.CHANNEL_LINK}|#{self.CHANNEL_NAME}> para mais informações"
         response = slack_service.send_slack_message(
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"],
-            text=f"Acesse o canal <{channel_link}|#{channel_name}> para mais informações",
+            text=text,
         )
 
         return response
 
 
 class DashboardStrategy(BaseStrategy):
-    def execute(self, payload: dict, slack_service: SlackService):
-        blocks_dashboard = get_blocks_dashboard()
+    """
+    Strategy for providing information about the dashboard.
+    """
 
+    def execute(self, payload: dict, slack_service: SlackService):
+        """
+        Execute the strategy for providing information about the dashboard.
+
+        Args:
+            payload (dict): The payload containing information about the interaction.
+            slack_service (SlackService): The SlackService instance for API interaction.
+
+        Returns:
+            dict: The API response.
+        """
+        blocks_dashboard = get_blocks_dashboard()
         response = slack_service.send_slack_message(
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"],
@@ -87,7 +175,24 @@ class DashboardStrategy(BaseStrategy):
 
 
 class EmailStatusUpdateStrategy(BaseStrategy):
+    """
+    Strategy for sending email status update messages.
+    """
+    # Bot duvidas channel
+    BOT_CHANNEL = "C04JBNDLF16"
+    RESPONSE_TO_USER = "Enviamos mensagem para os nossos analistas, em breve entraremos em contato com você por aqui!"
+
     def execute(self, payload: dict, slack_service: SlackService):
+        """
+        Execute the strategy for sending email status update messages.
+
+        Args:
+            payload (dict): The payload containing information about the interaction.
+            slack_service (SlackService): The SlackService instance for API interaction.
+
+        Returns:
+            dict: The API response.
+        """
         thread_link = get_direct_thread_link(payload)
         blocks_messages_specialist = get_blocks_send_messages_to_analysts(
             user=payload["user"]["username"],
@@ -96,30 +201,39 @@ class EmailStatusUpdateStrategy(BaseStrategy):
         )
 
         response_message_to_specialist = slack_service.send_slack_message(
-            channel="#bot_duvidas",
+            channel=self.BOT_CHANNEL,
             blocks=blocks_messages_specialist['blocks'],
         )
 
         response_message_to_user_in_thread = slack_service.send_slack_message(
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"],
-            text="Enviamos mensagem para os nossos especialistas, em breve entraremos em contato com você por aqui!",
+            text=self.RESPONSE_TO_USER,
         )
 
-        print("Response message to bot channel to specialist")
-        print(response_message_to_specialist)
-        print("Response message to user in thread")
-        print(response_message_to_user_in_thread)
-
-        return response_message_to_specialist
+        return response_message_to_specialist and response_message_to_user_in_thread
 
 
 class PlatformLicenseSecureCodeWarriorsStrategy(BaseStrategy):
+    """
+    Strategy for providing information about the Platform License related to Secure Code Warriors.
+    """
+    WORKPLACE_LINK = "https://meli.workplace.com/groups/539467037029524/permalink/1076399480002941/"
+
     def execute(self, payload: dict, slack_service: SlackService):
-        workplace_link = "https://meli.workplace.com/groups/539467037029524/permalink/1076399480002941/"
+        """
+        Execute the strategy for providing information about the Platform License related to Secure Code Warriors.
+
+        Args:
+            payload (dict): The payload containing information about the interaction.
+            slack_service (SlackService): The SlackService instance for API interaction.
+
+        Returns:
+            dict: The API response.
+        """
         response = slack_service.send_slack_message(
             thread_ts=payload["message"]["thread_ts"],
             channel=payload["channel"]["id"],
-            text=f"Você foi redirecionado para o workplace <{workplace_link}|Workplace> para mais informações.",
+            text=f"Você foi redirecionado para o <{self.WORKPLACE_LINK}|Workplace> para mais informações.",
         )
         return response

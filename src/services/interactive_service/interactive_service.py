@@ -1,5 +1,4 @@
 # Define the strategies in a dictionary
-from src.client.slack_client import SlackClient
 from src.services.interactive_service.actions_strategy import (
     SecureCodeWarriorStrategy,
     CourseLinksSecureCodeWarriorsStrategy,
@@ -41,12 +40,10 @@ def handle_actions(payload: dict):
     Raises:
         ValueError: If the action ID is not implemented.
     """
-    slack_service = SlackService(slack_client=SlackClient())
     action_id = payload['actions'][0]['value']
-
     strategy = strategies_actions.get(action_id)
 
     if not strategy:
         raise ValueError(f"Action {action_id} not implemented.")
 
-    return strategy.execute(payload=payload, slack_service=slack_service)
+    return strategy.execute(payload=payload, slack_service=SlackService())
