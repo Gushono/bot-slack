@@ -29,14 +29,10 @@ def handle_slack_events():
         "app_home_opened": handle_app_home_opened
 
     }
-
     data = request.get_json()
-    print("this is the value")
-    print(data)
-    print("this is the data type")
-    print(data)
-
     slack_service = SlackService()
+
+    # D04H1RVV9NV bot id
 
     bot_id = slack_service._slack_client.client.api_call("auth.test")["user_id"]
 
@@ -55,19 +51,13 @@ def handle_slack_events():
         handler = events_handlers.get(event_type)
 
         if not handler:
-            event = data["event"]
-            slack_service.send_slack_message(
-                channel="C04GL827WKX",
-                text=f"This is the event not implemented: {json.dumps(event)}",
-            )
-
-            return jsonify()
+            raise ValueError(f"Event {event_type} not implemented.")
 
         event = data["event"]
-        slack_service.send_slack_message(
-            channel="C04GL827WKX",
-            text=f"This is the event: {json.dumps(event)}",
-        )
+        # slack_service.send_slack_message(
+        #     channel="C04GL827WKX",
+        #     text=f"This is the event: {json.dumps(event)}",
+        # )
 
         result = handler(data)
         print(result)
