@@ -12,6 +12,9 @@ class OnMessageStrategy(BaseStrategy):
         if not self._is_valid_channel(event.get("channel")):
             return Response(), 200
 
+        if event.get("subtype"):
+            return Response(), 200
+
         initial_message = get_block_initial_message()
         response = slack_service.send_slack_message(
             channel=event.get("channel"),
