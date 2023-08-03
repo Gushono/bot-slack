@@ -12,16 +12,28 @@ EVENTS_HANDLERS_STRATEGY = {
     "message": OnMessageStrategy,
     "app_home_opened": OnAppHomeOpenedStrategy,
     "error": OnErrorStrategy
-    # "error": ErrorStrategy,
 }
 
 
 def handle_events(event: dict) -> tuple[Response, int]:
-    slack_service = SlackService()
-    if slack_service.is_message_from_bot(event):
-        return Response(), 200
+    """
+    Handle incoming Slack events.
 
-    if slack_service.is_message_inside_a_thread(event):
+    This function processes incoming Slack events and delegates their handling to specific strategies.
+
+    Args:
+        event (dict): The incoming Slack event dictionary.
+
+    Returns:
+        tuple[Response, int]: A tuple containing a response object and an HTTP status code.
+
+    Raises:
+        ValueError: If the event type is not implemented.
+    """
+    slack_service = SlackService()
+
+    # Check if the event is from a bot or inside a thread and ignore it
+    if slack_service.is_message_from_bot(event) or slack_service.is_message_inside_a_thread(event):
         return Response(), 200
 
     slack_service.send_slack_message(
@@ -38,7 +50,3 @@ def handle_events(event: dict) -> tuple[Response, int]:
         return result
 
     return Response(), 200
-
-
-def handle_error(err):
-    print("ERROR: " + str(err))

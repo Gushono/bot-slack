@@ -5,7 +5,7 @@ from slack_sdk.signature import SignatureVerifier
 
 from src.environment import env
 from src.services.events_service.events_service import handle_events
-from src.services.interactive_service.interactive_service import handle_actions, handle_view_flow
+from src.services.interactive_service.interactive_service import handle_actions
 
 slack_events_blueprint = Blueprint('slack_events', __name__)
 signature_verifier = SignatureVerifier(env.get_signing_secret())
@@ -13,8 +13,17 @@ signature_verifier = SignatureVerifier(env.get_signing_secret())
 
 @slack_events_blueprint.route("/slack/events", methods=["POST"])
 def handle_slack_events():
-    # if not signature_verifier.is_valid_request(request.get_data(), request.headers):
-    #     return jsonify({"error": "Invalid request"}), 403
+    """
+    Handle incoming Slack events received at the "/slack/events" endpoint.
+
+    This function verifies the incoming request, processes the event payload,
+    and delegates handling to appropriate event and action handlers.
+
+    Returns:
+        tuple[Response, int]: A tuple containing a response object and an HTTP status code.
+    """
+    if not signature_verifier.is_valid_request(request.get_data(), request.headers):
+        return Response(), 403
 
     data = request.get_json()
 
@@ -27,7 +36,16 @@ def handle_slack_events():
 
 
 @slack_events_blueprint.route("/interactive-endpoint", methods=["POST"])
-def echo_interactive():
+def interactive_endpoint():
+    """
+    Handle incoming interactive actions received at the "/interactive-endpoint" endpoint.
+
+    This function processes interactive action payloads, and
+    delegates handling to appropriate action.
+
+    Returns:
+        tuple[Response, int]: A tuple containing a response object and an HTTP status code.
+    """
     payload = json.loads(request.form['payload'])
     if not payload["user"]:
         return Response(), 200
@@ -38,11 +56,4 @@ def echo_interactive():
         if result is not None:
             return Response(), 200
 
-    # View Flow
-    if payload.get("view") is not None:
-        result = handle_view_flow(payload)
-        if result is not None:
-            return Response(), 200
-
-    print(payload)
-    return {"opa": "opa"}, 200
+    return Response(), 200

@@ -6,8 +6,9 @@ from src.services.interactive_service.actions_strategy import (
     PlatformProblemSecureCodeWarriorsStrategy,
     SecurityGuardiansStrategy,
     DashboardStrategy,
-    EmailStatusUpdateStrategy, PlatformLicenseSecureCodeWarriorsStrategy, SSDLCStrategy,
-    # ClickMeStrategy
+    EmailStatusUpdateStrategy,
+    PlatformLicenseSecureCodeWarriorsStrategy,
+    SSDLCStrategy,
 )
 from src.services.slack_service import SlackService
 
@@ -21,12 +22,25 @@ strategies_actions = {
     'email_not_in_dashboard_value': EmailStatusUpdateStrategy(),
     'status_not_updated_value': EmailStatusUpdateStrategy(),
     'platform_license_secure_code_warriors_value': PlatformLicenseSecureCodeWarriorsStrategy(),
-    # 'click_me_123': ClickMeStrategy(),
-    # Add more strategies as needed...
 }
 
 
 def handle_actions(payload: dict):
+    """
+    Handle interactive actions triggered in Slack.
+
+    This function processes interactive action payloads, identifies the relevant action strategy based on the
+    action ID, and delegates execution to the corresponding strategy handler.
+
+    Args:
+        payload (dict): The payload containing information about the interactive action.
+
+    Returns:
+        Any: The result of executing the action strategy.
+
+    Raises:
+        ValueError: If the action ID is not implemented.
+    """
     slack_service = SlackService(slack_client=SlackClient())
     action_id = payload['actions'][0]['value']
 
@@ -36,18 +50,3 @@ def handle_actions(payload: dict):
         raise ValueError(f"Action {action_id} not implemented.")
 
     return strategy.execute(payload=payload, slack_service=slack_service)
-
-
-def handle_view_flow(payload: dict):
-    # slack_service = SlackService(slack_client=SlackClient())
-    # action_id = payload['view']['callback_id']
-    #
-    # strategy = strategies_actions.get(action_id)
-    #
-    # if not strategy:
-    #     raise ValueError(f"Action {action_id} not implemented.")
-    #
-    # return strategy.execute(payload=payload, slack_service=slack_service)
-    print("Entrou no view flow")
-    print(payload)
-    return True
