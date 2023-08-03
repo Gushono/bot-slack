@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="225d9359-ffee-4f22-812a-261cad24dffa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/services/events_service/events_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/events_service/events_slack_blocks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/events_service/events_strategy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/slack_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/slack_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/slack_events_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/slack_events_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/events_service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/interactive_service/actions_slack_blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/interactive_service/actions_slack_blocks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/interactive_service/actions_strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/interactive_service/actions_strategy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/interactive_service/views_slack_blocks.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/interactive_service/views_strategy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/slack_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/slack_service.py" afterDir="false" />
-    </list>
+    <list default="true" id="225d9359-ffee-4f22-812a-261cad24dffa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,7 +162,7 @@
       <workItem from="1690534320256" duration="19186000" />
       <workItem from="1690806844816" duration="7488000" />
       <workItem from="1691070946254" duration="44000" />
-      <workItem from="1691071005470" duration="10162000" />
+      <workItem from="1691071005470" duration="10502000" />
     </task>
     <servers />
   </component>
@@ -203,7 +189,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/controller/slack_events_controller.py</url>
-          <line>27</line>
+          <line>15</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -217,6 +203,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/bot_slack_dse$s3.coverage" NAME="s3 Coverage Results" MODIFIED="1690471162859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/bot_slack_dse$pass.coverage" NAME="pass Coverage Results" MODIFIED="1690378649105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/bot_slack$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1691079000076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/bot_slack$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1691094790538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

@@ -14,10 +14,10 @@ class SlackService:
         self.bot_id = self._obtain_bot_id()
 
     def _obtain_bot_id(self) -> str:
-        if self.bot_id:
-            return self.bot_id
+        if self.bot_id is None:
+            self.bot_id = self._slack_client.obtain_bot_id()
 
-        return self._slack_client.obtain_bot_id()
+        return self.bot_id
 
     def send_slack_message(
             self,
