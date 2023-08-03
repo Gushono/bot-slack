@@ -1,5 +1,10 @@
-import json
+"""
+Slack Events Blueprint
 
+This module provides routes for handling incoming Slack events and interactive actions.
+"""
+
+import json
 from flask import Blueprint, request, Response
 from slack_sdk.signature import SignatureVerifier
 
@@ -12,7 +17,7 @@ signature_verifier = SignatureVerifier(env.get_signing_secret())
 
 
 @slack_events_blueprint.route("/slack/events", methods=["POST"])
-def handle_slack_events():
+def handle_slack_events() -> tuple[Response, int]:
     """
     Handle incoming Slack events received at the "/slack/events" endpoint.
 
@@ -36,7 +41,7 @@ def handle_slack_events():
 
 
 @slack_events_blueprint.route("/interactive-endpoint", methods=["POST"])
-def interactive_endpoint():
+def interactive_endpoint() -> tuple[Response, int]:
     """
     Handle incoming interactive actions received at the "/interactive-endpoint" endpoint.
 
