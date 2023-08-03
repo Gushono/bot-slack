@@ -1,40 +1,45 @@
+"""
+Slack Client Module
+
+This module provides classes for interacting with the Slack API.
+"""
+
 from abc import ABC
+from asyncio import Future
 
 from slack import WebClient
+from slack_sdk.web.legacy_slack_response import LegacySlackResponse
 
 from src.environment import env
 
 
 class SlackClientBase(ABC):
-    def send_message(self, params: dict):
-        pass
+    """
+    Abstract base class for Slack clients.
 
-    def view_open(self, params: dict):
-        pass
+    This class defines the interface for interacting with the Slack API.
+    """
 
-    def views_publish(self, params: dict):
-        pass
+    def send_message(self, params: dict) -> dict:
+        """Send a message using the Slack API."""
+        raise NotImplementedError
 
-    def obtain_bot_id(self):
-        pass
+    def view_open(self, params: dict) -> dict:
+        """Open a view using the Slack API."""
+        raise NotImplementedError
+
+    def views_publish(self, params: dict) -> dict:
+        """Publish a view using the Slack API."""
+        raise NotImplementedError
+
+    def obtain_bot_id(self) -> str:
+        """Obtain the bot ID using the Slack API."""
+        raise NotImplementedError
 
 
 class SlackClient(SlackClientBase):
     """
     Concrete implementation of SlackClientBase providing methods to interact with the Slack API.
-
-    This class implements the methods to send messages, open views, publish views, and obtain the bot's user ID
-    using the Slack API.
-
-    Attributes:
-        client (WebClient): An instance of the WebClient from the Slack SDK used for API communication.
-
-    Methods:
-        __init__(): Initialize the SlackClient instance with the Slack bot token.
-        send_message(params: dict): Send a message using the Slack API.
-        view_open(params: dict): Open a view using the Slack API.
-        views_publish(params: dict): Publish a view using the Slack API.
-        obtain_bot_id(): Obtain the bot's user ID using the Slack API.
     """
 
     def __init__(self):
@@ -49,51 +54,22 @@ class SlackClient(SlackClientBase):
             raise ValueError("SLACK_BOT_TOKEN environment variable is not set.")
         self.client = WebClient(token=slack_bot_token)
 
-    def send_message(self, params: dict):
-        """
-        Send a message using the Slack API.
-
-        Args:
-            params (dict): Parameters for sending the message.
-
-        Returns:
-            dict: API response.
-        """
+    def send_message(self, params: dict) -> Future | LegacySlackResponse:
+        """Send a message using the Slack API."""
         response = self.client.chat_postMessage(**params)
         return response
 
-    def view_open(self, params: dict):
-        """
-        Open a view using the Slack API.
-
-        Args:
-            params (dict): Parameters for opening the view.
-
-        Returns:
-            dict: API response.
-        """
+    def view_open(self, params: dict) -> Future | LegacySlackResponse:
+        """Open a view using the Slack API."""
         response = self.client.views_open(**params)
         return response
 
-    def views_publish(self, params: dict):
-        """
-        Publish a view using the Slack API.
-
-        Args:
-            params (dict): Parameters for publishing the view.
-
-        Returns:
-            dict: API response.
-        """
+    def views_publish(self, params: dict) -> Future | LegacySlackResponse:
+        """Publish a view using the Slack API."""
         response = self.client.views_publish(**params)
         return response
 
-    def obtain_bot_id(self):
-        """
-        Obtain the bot ID using the Slack API.
-
-        Returns:
-            str: The bot ID.
-        """
+    def obtain_bot_id(self) -> str:
+        """Obtain the bot ID using the Slack API."""
         response = self.client.api_call("auth.test")
         return response["user_id"]
