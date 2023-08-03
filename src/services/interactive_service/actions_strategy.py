@@ -182,7 +182,10 @@ class EmailStatusUpdateStrategy(BaseStrategy):
 
     # Bot duvidas channel
     BOT_CHANNEL = "C04JBNDLF16"
-    RESPONSE_TO_USER = "Enviamos mensagem para os nossos analistas, em breve entraremos em contato com você por aqui!"
+    RESPONSE_TO_USER = (
+        "Enviamos mensagem para os nossos analistas, em breve entraremos em contato com você por aqui!"
+        " Caso ainda não tenha detalhado sua dúvida, por favor, escreva aqui"
+    )
 
     def execute(self, payload: dict, slack_service: SlackService):
         """
