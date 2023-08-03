@@ -47,9 +47,11 @@ def handle_slack_events():
         #     text=f"This is the FULL PAYLOAD OUT OF DATA: {json.dumps(data)}",
         # )
 
+        event = data["event"]
+
         slack_service.send_slack_message(
             channel="C04GL827WKX",
-            text=f"This is the EVENT: {json.dumps(data)}\n\nvalues {request.headers.values()}",
+            text=f"This is the EVENT: {json.dumps(event)}\n\nvalues {request.headers.values()}",
         )
 
         event_type = data["event"]["type"]
