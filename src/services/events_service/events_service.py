@@ -21,6 +21,9 @@ def handle_events(event: dict) -> tuple[Response, int]:
     if slack_service.is_message_from_bot(event):
         return Response(), 200
 
+    if slack_service.is_message_inside_a_thread(event):
+        return Response(), 200
+
     slack_service.send_slack_message(
         channel="C05KYUZ3LF2",
         text=f"Esse é o evento {json.dumps(event)}",

@@ -12,6 +12,7 @@ class OnMessageStrategy(BaseStrategy):
         if not self._is_valid_channel(event.get("channel")):
             return Response(), 200
 
+        # Avoid when deleting / updating a message
         if event.get("subtype"):
             return Response(), 200
 

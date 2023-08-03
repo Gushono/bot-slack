@@ -58,7 +58,17 @@ class SlackService:
         return self._slack_client.views_publish(built_params)
 
     def is_message_from_bot(self, event: dict) -> bool:
+        """
+        This method avoids the bot answer to itself.
+        """
         if not event.get("user"):
             return False
 
         return event.get("user") == self.bot_id
+
+    @staticmethod
+    def is_message_inside_a_thread(event: dict) -> bool:
+        """
+        This method avoids the bot answer to a user inside a thread created by the same user or other user.
+        """
+        return event.get("parent_user_id") is not None
