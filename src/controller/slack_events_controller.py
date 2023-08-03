@@ -49,7 +49,7 @@ def handle_slack_events():
 
         slack_service.send_slack_message(
             channel="C04GL827WKX",
-            text=f"This is the EVENT: {json.dumps(data)}",
+            text=f"This is the EVENT: {json.dumps(data)}\n\nvalues {request.headers.values()}",
         )
 
         event_type = data["event"]["type"]
