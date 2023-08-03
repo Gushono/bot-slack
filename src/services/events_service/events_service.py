@@ -4,7 +4,8 @@ from flask import Response
 
 from src.services.events_service.events_strategy import (
     OnMessageStrategy,
-    OnAppHomeOpenedStrategy, OnErrorStrategy
+    OnAppHomeOpenedStrategy,
+    OnErrorStrategy
 )
 from src.services.slack_service import SlackService
 
