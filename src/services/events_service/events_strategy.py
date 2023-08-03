@@ -14,10 +14,10 @@ class OnMessageStrategy(BaseStrategy):
 
         initial_message = get_block_initial_message()
         response = slack_service.send_slack_message(
-            channel=event["channel"],
-            text=event["text"],
+            channel=event.get("channel"),
+            text=event.get("text"),
             blocks=initial_message["blocks"],
-            thread_ts=event["ts"],
+            thread_ts=event.get("ts"),
         )
 
         return response
