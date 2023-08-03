@@ -3,11 +3,8 @@ import json
 from flask import Blueprint, request, Response, jsonify
 from slack_sdk.signature import SignatureVerifier
 
-from src.client.slack_client import SlackClient
 from src.environment import env
-from src.services.interactive_service.actions_slack_blocks import get_block_initial_message
 from src.services.interactive_service.interactive_service import handle_actions, handle_view_flow
-from src.services.interactive_service.views_strategy import HomeStrategy
 from src.services.slack_service import SlackService
 
 slack_events_blueprint = Blueprint('slack_events', __name__)
@@ -23,18 +20,23 @@ def handle_slack_events():
     if not signature_verifier.is_valid_request(request.get_data(), request.headers):
         return jsonify({"error": "Invalid request"}), 403
 
-    data = request.form
+    data = request.get_json()
+    print("this is the value")
+    print(data)
     print("this is the data")
     print(data)
 
-    data_dictionary = data.to_dict()
-    print("this is the data dictionary")
-    print(data_dictionary)
-
     slack_service = SlackService()
 
+    bot_id = slack_service._slack_client.client.api_call("auth.test")["user_id"]
+
     if "event" in data and "text" in data["event"]:
-        event = data_dictionary["event"]
+        user = data["event"].get("user")
+
+        if not user or user == bot_id:
+            return Response(), 200
+
+        event = data["event"]
         slack_service.send_slack_message(
             channel="C04GL827WKX",
             text=f"This is the event: {json.dumps(event)}",
