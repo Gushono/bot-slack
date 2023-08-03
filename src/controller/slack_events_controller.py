@@ -40,7 +40,6 @@ def handle_slack_events():
 
     bot_id = slack_service._slack_client.client.api_call("auth.test")["user_id"]
 
-    event_type = data.get("type")
     if "event" in data and "text" in data["event"]:
 
         user = data["event"].get("user")
@@ -52,6 +51,7 @@ def handle_slack_events():
             text=f"This is the FULL PAYLOAD OUT OF DATA: {json.dumps(data)}",
         )
 
+        event_type = data["event"]["type"]
         handler = events_handlers.get(event_type)
 
         if not handler:
