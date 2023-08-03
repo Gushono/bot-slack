@@ -23,6 +23,8 @@ def handle_slack_events():
     if not signature_verifier.is_valid_request(request.get_data(), request.headers):
         return jsonify({"error": "Invalid request"}), 403
 
+    values = request.headers
+
     events_handlers = {
         "message": handle_message,
         "app_mention": handle_mentions,
@@ -49,9 +51,12 @@ def handle_slack_events():
 
         event = data["event"]
 
+        timestamp = values.get("x-slack-request-timestamp")
+        teste_signature = values.get("x-slack-signature")
+
         slack_service.send_slack_message(
             channel="C04GL827WKX",
-            text=f"This is the EVENT: {json.dumps(event)}\n\nvalues {request.headers.values()}",
+            text=f"This is the EVENT: {json.dumps(event)}\n\ntimestamp {timestamp}\n\nsignature {teste_signature}",
         )
 
         event_type = data["event"]["type"]
