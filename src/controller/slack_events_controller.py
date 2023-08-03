@@ -38,7 +38,7 @@ def handle_slack_events():
 
     bot_id = slack_service._slack_client.client.api_call("auth.test")["user_id"]
 
-    if "event" in data and "text" in data["event"]:
+    if "event" in data:
 
         user = data["event"].get("user")
         if not user or user == bot_id:
