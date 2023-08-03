@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="225d9359-ffee-4f22-812a-261cad24dffa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/slack_events_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/slack_events_controller.py" afterDir="false" />
-    </list>
+    <list default="true" id="225d9359-ffee-4f22-812a-261cad24dffa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -165,7 +162,7 @@
       <workItem from="1690534320256" duration="19186000" />
       <workItem from="1690806844816" duration="7488000" />
       <workItem from="1691070946254" duration="44000" />
-      <workItem from="1691071005470" duration="1740000" />
+      <workItem from="1691071005470" duration="2107000" />
     </task>
     <servers />
   </component>
@@ -192,7 +189,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/controller/slack_events_controller.py</url>
-          <line>67</line>
+          <line>61</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

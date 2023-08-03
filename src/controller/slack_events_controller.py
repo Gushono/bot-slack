@@ -42,9 +42,14 @@ def handle_slack_events():
         if not user or user == bot_id:
             return Response(), 200
 
+        # slack_service.send_slack_message(
+        #     channel="C04GL827WKX",
+        #     text=f"This is the FULL PAYLOAD OUT OF DATA: {json.dumps(data)}",
+        # )
+
         slack_service.send_slack_message(
             channel="C04GL827WKX",
-            text=f"This is the FULL PAYLOAD OUT OF DATA: {json.dumps(data)}",
+            text=f"This is the EVENT: {json.dumps(data)}",
         )
 
         event_type = data["event"]["type"]
@@ -144,7 +149,6 @@ def echo_interactive():  # pragma: no cover
     return {"opa": "opa"}, 200
 
 
-#
 # @slack_events_adapter.on("app_home_opened")
 def handle_app_home_opened(event_data):
     print(event_data)
