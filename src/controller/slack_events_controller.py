@@ -23,16 +23,20 @@ def handle_slack_events():
     if not signature_verifier.is_valid_request(request.get_data(), request.headers):
         return jsonify({"error": "Invalid request"}), 403
 
-    data = request.json()
+    data = request.form
+    print("this is the data")
+    print(data)
+
+    data_dictionary = data.to_dict()
+    print("this is the data dictionary")
+    print(data_dictionary)
 
     slack_service = SlackService()
 
     if "event" in data and "text" in data["event"]:
-        print("this is the data")
-        print(data)
-        event = data["event"]
+        event = data_dictionary["event"]
         slack_service.send_slack_message(
-            channel=event["channel"],
+            channel="C04GL827WKX",
             text=f"This is the event: {json.dumps(event)}",
         )
 
