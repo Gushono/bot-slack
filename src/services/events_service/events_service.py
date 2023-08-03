@@ -5,14 +5,14 @@ from flask import Response
 from src.services.events_service.events_strategy import (
     OnMessageStrategy,
     OnAppHomeOpenedStrategy,
-    OnErrorStrategy
+    OnErrorStrategy,
 )
 from src.services.slack_service import SlackService
 
 EVENTS_HANDLERS_STRATEGY = {
     "message": OnMessageStrategy,
     "app_home_opened": OnAppHomeOpenedStrategy,
-    "error": OnErrorStrategy
+    "error": OnErrorStrategy,
 }
 
 
@@ -34,7 +34,9 @@ def handle_events(event: dict) -> tuple[Response, int]:
     slack_service = SlackService()
 
     # Check if the event is from a bot or inside a thread and ignore it
-    if slack_service.is_message_from_bot(event) or slack_service.is_message_inside_a_thread(event):
+    if slack_service.is_message_from_bot(
+        event
+    ) or slack_service.is_message_inside_a_thread(event):
         return Response(), 200
 
     slack_service.send_slack_message(

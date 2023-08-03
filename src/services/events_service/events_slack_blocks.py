@@ -5,19 +5,14 @@ def get_block_initial_message():
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": ":wave: Olá! Bem-vindo ao nosso canal! Estou aqui para ajudá-lo. :smiley:"
-                }
+                    "text": ":wave: Olá! Bem-vindo ao nosso canal! Estou aqui para ajudá-lo. :smiley:",
+                },
             },
             {
                 "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "Selecione uma das opções abaixo:"
-                }
+                "text": {"type": "mrkdwn", "text": "Selecione uma das opções abaixo:"},
             },
-            {
-                "type": "divider"
-            },
+            {"type": "divider"},
             {
                 "type": "actions",
                 "elements": [
@@ -26,28 +21,24 @@ def get_block_initial_message():
                         "text": {
                             "type": "plain_text",
                             "text": "Secure Code Warrior",
-                            "emoji": True
+                            "emoji": True,
                         },
                         "value": "secure_code_warrior_value",
-                        "action_id": "secure_code_warrior_action"
+                        "action_id": "secure_code_warrior_action",
                     }
-                ]
+                ],
             },
             {
                 "type": "actions",
                 "elements": [
                     {
                         "type": "button",
-                        "text": {
-                            "type": "plain_text",
-                            "text": "SSDLC",
-                            "emoji": True
-                        },
+                        "text": {"type": "plain_text", "text": "SSDLC", "emoji": True},
                         "value": "ssdlc_value",
                         "url": "https://learninghub-int.mercadolibre.com/courses/course-v1:it_prod+S-SDLC+2023_v2/course/",
-                        "action_id": "ssdlc_action"
+                        "action_id": "ssdlc_action",
                     }
-                ]
+                ],
             },
             {
                 "type": "actions",
@@ -57,12 +48,12 @@ def get_block_initial_message():
                         "text": {
                             "type": "plain_text",
                             "text": "Security Guardians",
-                            "emoji": True
+                            "emoji": True,
                         },
                         "value": "security_guardians_value",
-                        "action_id": "security_guardians_action"
+                        "action_id": "security_guardians_action",
                     }
-                ]
+                ],
             },
             {
                 "type": "actions",
@@ -72,31 +63,25 @@ def get_block_initial_message():
                         "text": {
                             "type": "plain_text",
                             "text": "Dashboard",
-                            "emoji": True
+                            "emoji": True,
                         },
                         "value": "dashboard_value",
-                        "action_id": "dashboard_action"
+                        "action_id": "dashboard_action",
                     }
-                ]
+                ],
             },
             {
                 "type": "actions",
                 "elements": [
                     {
                         "type": "button",
-                        "text": {
-                            "type": "plain_text",
-                            "text": "Outros",
-                            "emoji": True
-                        },
+                        "text": {"type": "plain_text", "text": "Outros", "emoji": True},
                         "value": "others_value",
-                        "action_id": "others_action"
+                        "action_id": "others_action",
                     }
-                ]
+                ],
             },
-            {
-                "type": "divider"
-            },
+            {"type": "divider"},
             {
                 "type": "actions",
                 "elements": [
@@ -105,13 +90,13 @@ def get_block_initial_message():
                         "text": {
                             "type": "plain_text",
                             "text": "Ainda preciso de ajuda",
-                            "emoji": True
+                            "emoji": True,
                         },
                         "value": "need_help_value",
-                        "action_id": "need_help_action"
+                        "action_id": "need_help_action",
                     }
-                ]
-            }
+                ],
+            },
         ]
     }
 
@@ -126,17 +111,17 @@ def get_home_page():
                     "text": {
                         "type": "mrkdwn",
                         "text": "Olá, tudo bem? :wave:\n\n "
-                                "Sou o Bot do time de Developer Security Education :bot: - WebSec e estou aqui para te "
-                                "ajudar com suas principais dúvidas/problemas sobre as "
-                                "capacitações de Segurança de aplicações! :logo-dse: "
-                    }
+                        "Sou o Bot do time de Developer Security Education :bot: - WebSec e estou aqui para te "
+                        "ajudar com suas principais dúvidas/problemas sobre as "
+                        "capacitações de Segurança de aplicações! :logo-dse: ",
+                    },
                 },
                 {
                     "type": "section",
                     "text": {
                         "type": "plain_text",
-                        "text": "Você pode interagir com as seguintes opções:"
-                    }
+                        "text": "Você pode interagir com as seguintes opções:",
+                    },
                 },
                 {
                     "type": "actions",
@@ -146,20 +131,20 @@ def get_home_page():
                             "text": {
                                 "type": "plain_text",
                                 "text": "Meu status de capacitação",
-                                "emoji": True
+                                "emoji": True,
                             },
-                            "value": "create_task"
+                            "value": "create_task",
                         },
                         {
                             "type": "button",
                             "text": {
                                 "type": "plain_text",
                                 "text": "Link dashboard",
-                                "emoji": True
+                                "emoji": True,
                             },
-                            "value": "create_project"
-                        }
-                    ]
+                            "value": "create_project",
+                        },
+                    ],
                 },
                 {
                     "type": "context",
@@ -167,31 +152,23 @@ def get_home_page():
                         {
                             "type": "image",
                             "image_url": "https://api.slack.com/img/blocks/bkb_template_images/placeholder.png",
-                            "alt_text": "placeholder"
+                            "alt_text": "placeholder",
                         }
-                    ]
+                    ],
                 },
+                {
+                    "type": "section",
+                    "text": {"type": "mrkdwn", "text": "*Nossos canais*"},
+                },
+                {"type": "divider"},
                 {
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "*Nossos canais*"
-                    }
+                        "text": "<fakelink.toChannel.com|*#guardians*>\nGuardians é o canal onde voce pode tirar duvidas... ",
+                    },
                 },
-                {
-                    "type": "divider"
-                },
-                {
-                    "type": "section",
-                    "text": {
-                        "type": "mrkdwn",
-                        "text": "<fakelink.toChannel.com|*#guardians*>\nGuardians é o canal onde voce pode tirar duvidas... "
-                    }
-                },
-                {
-                    "type": "divider"
-                }
-            ]
+                {"type": "divider"},
+            ],
         }
-
     }

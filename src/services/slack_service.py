@@ -35,11 +35,11 @@ class SlackService:
         return self._bot_id
 
     def send_slack_message(
-            self,
-            channel: str = None,
-            text: str = None,
-            blocks: str = None,
-            thread_ts: str = None
+        self,
+        channel: str = None,
+        text: str = None,
+        blocks: str = None,
+        thread_ts: str = None,
     ):
         """
         Send a message to a Slack channel.

@@ -12,15 +12,15 @@ from src.services.interactive_service.actions_strategy import (
 from src.services.slack_service import SlackService
 
 strategies_actions = {
-    'secure_code_warrior_value': SecureCodeWarriorStrategy(),
-    'ssdlc_value': SSDLCStrategy(),
-    'course_links_secure_code_warriors_value': CourseLinksSecureCodeWarriorsStrategy(),
-    'platform_problem_secure_code_warriors_value': PlatformProblemSecureCodeWarriorsStrategy(),
-    'security_guardians_value': SecurityGuardiansStrategy(),
-    'dashboard_value': DashboardStrategy(),
-    'email_not_in_dashboard_value': EmailStatusUpdateStrategy(),
-    'status_not_updated_value': EmailStatusUpdateStrategy(),
-    'platform_license_secure_code_warriors_value': PlatformLicenseSecureCodeWarriorsStrategy(),
+    "secure_code_warrior_value": SecureCodeWarriorStrategy(),
+    "ssdlc_value": SSDLCStrategy(),
+    "course_links_secure_code_warriors_value": CourseLinksSecureCodeWarriorsStrategy(),
+    "platform_problem_secure_code_warriors_value": PlatformProblemSecureCodeWarriorsStrategy(),
+    "security_guardians_value": SecurityGuardiansStrategy(),
+    "dashboard_value": DashboardStrategy(),
+    "email_not_in_dashboard_value": EmailStatusUpdateStrategy(),
+    "status_not_updated_value": EmailStatusUpdateStrategy(),
+    "platform_license_secure_code_warriors_value": PlatformLicenseSecureCodeWarriorsStrategy(),
 }
 
 
@@ -40,7 +40,7 @@ def handle_actions(payload: dict):
     Raises:
         ValueError: If the action ID is not implemented.
     """
-    action_id = payload['actions'][0]['value']
+    action_id = payload["actions"][0]["value"]
     strategy = strategies_actions.get(action_id)
 
     if not strategy:

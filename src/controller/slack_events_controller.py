@@ -12,7 +12,7 @@ from src.environment import env
 from src.services.events_service.events_service import handle_events
 from src.services.interactive_service.interactive_service import handle_actions
 
-slack_events_blueprint = Blueprint('slack_events', __name__)
+slack_events_blueprint = Blueprint("slack_events", __name__)
 signature_verifier = SignatureVerifier(env.get_signing_secret())
 
 
@@ -51,7 +51,7 @@ def interactive_endpoint() -> tuple[Response, int]:
     Returns:
         tuple[Response, int]: A tuple containing a response object and an HTTP status code.
     """
-    payload = json.loads(request.form['payload'])
+    payload = json.loads(request.form["payload"])
     if not payload["user"]:
         return Response(), 200
 

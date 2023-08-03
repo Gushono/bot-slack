@@ -10,9 +10,7 @@ def build_markdown_text_for_principais_duvidas():
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": (
-                        question.value
-                    ),
+                    "text": (question.value),
                 },
             }
         )
@@ -21,16 +19,12 @@ def build_markdown_text_for_principais_duvidas():
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": (
-                        answer.value
-                    ),
+                    "text": (answer.value),
                 },
             },
         )
         faq_messages.append(
-            {
-                "type": "divider"
-            },
+            {"type": "divider"},
         )
 
     return faq_messages
@@ -43,12 +37,10 @@ def get_block_secure_code_warrior():
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "Você selecionou as opções de secure code warriors! Segue abaixo as opções:"
-                }
+                    "text": "Você selecionou as opções de secure code warriors! Segue abaixo as opções:",
+                },
             },
-            {
-                "type": "divider"
-            },
+            {"type": "divider"},
             {
                 "type": "actions",
                 "elements": [
@@ -57,12 +49,12 @@ def get_block_secure_code_warrior():
                         "text": {
                             "type": "plain_text",
                             "text": "Link Cursos",
-                            "emoji": True
+                            "emoji": True,
                         },
                         "value": "course_links_secure_code_warriors_value",
-                        "action_id": "course_links_secure_code_warriors_action"
+                        "action_id": "course_links_secure_code_warriors_action",
                     }
-                ]
+                ],
             },
             {
                 "type": "actions",
@@ -72,12 +64,12 @@ def get_block_secure_code_warrior():
                         "text": {
                             "type": "plain_text",
                             "text": "Problema Plataforma",
-                            "emoji": True
+                            "emoji": True,
                         },
                         "value": "platform_problem_secure_code_warriors_value",
-                        "action_id": "platform_problem_secure_code_warriors_action"
+                        "action_id": "platform_problem_secure_code_warriors_action",
                     }
-                ]
+                ],
             },
             {
                 "type": "actions",
@@ -87,17 +79,15 @@ def get_block_secure_code_warrior():
                         "text": {
                             "type": "plain_text",
                             "text": "Licença plataforma",
-                            "emoji": True
+                            "emoji": True,
                         },
                         "value": "platform_license_secure_code_warriors_value",
                         "url": "https://meli.workplace.com/groups/539467037029524/permalink/1076399480002941/",
-                        "action_id": "platform_license_secure_code_warriors_actions"
+                        "action_id": "platform_license_secure_code_warriors_actions",
                     }
-                ]
+                ],
             },
-            {
-                "type": "divider"
-            }
+            {"type": "divider"},
         ]
     }
 
@@ -105,46 +95,38 @@ def get_block_secure_code_warrior():
 def get_blocks_links_secure_code_warriors():
     return {
         "blocks": [
-            {
-                "type": "divider"
-            },
+            {"type": "divider"},
             {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "*<https://portal.securecodewarrior.com/#/courses/course-list/fb42f853-8bc4-414e-941c-b58ddd6d87f0|MELI Top 5 Backend / Machine Learning (Recomendado)>*"
-                }
+                    "text": "*<https://portal.securecodewarrior.com/#/courses/course-list/fb42f853-8bc4-414e-941c-b58ddd6d87f0|MELI Top 5 Backend / Machine Learning (Recomendado)>*",
+                },
             },
-            {
-                "type": "divider"
-            },
+            {"type": "divider"},
             {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "*<https://portal.securecodewarrior.com/#/courses/course-list/a1bcb123-6c47-468f-9983-5321ea36abd9|MELI Top 5 Frontend (Recomendado)>*"
-                }
+                    "text": "*<https://portal.securecodewarrior.com/#/courses/course-list/a1bcb123-6c47-468f-9983-5321ea36abd9|MELI Top 5 Frontend (Recomendado)>*",
+                },
             },
-            {
-                "type": "divider"
-            },
+            {"type": "divider"},
             {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "*<https://portal.securecodewarrior.com/#/courses/course-list/0f8343e9-23e5-4db1-87c2-747ded0a3f92|MELI Top 5 Mobile (Recomendado)>*"
-                }
+                    "text": "*<https://portal.securecodewarrior.com/#/courses/course-list/0f8343e9-23e5-4db1-87c2-747ded0a3f92|MELI Top 5 Mobile (Recomendado)>*",
+                },
             },
-            {
-                "type": "divider"
-            },
+            {"type": "divider"},
             {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "*<https://portal.securecodewarrior.com/#/courses/course-list/ef7ba068-fef0-47d8-87f2-6fd0116c082d|MELI Top 4 Data Science / FDA (Recomendado)>*"
-                }
-            }
+                    "text": "*<https://portal.securecodewarrior.com/#/courses/course-list/ef7ba068-fef0-47d8-87f2-6fd0116c082d|MELI Top 4 Data Science / FDA (Recomendado)>*",
+                },
+            },
         ]
     }
 
@@ -156,12 +138,10 @@ def get_blocks_dashboard():
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "Você selecionou as opções de dashboard! Segue abaixo as opções:"
-                }
+                    "text": "Você selecionou as opções de dashboard! Segue abaixo as opções:",
+                },
             },
-            {
-                "type": "divider"
-            },
+            {"type": "divider"},
             {
                 "type": "actions",
                 "elements": [
@@ -170,12 +150,12 @@ def get_blocks_dashboard():
                         "text": {
                             "type": "plain_text",
                             "text": "Meu email não está no dashboard",
-                            "emoji": True
+                            "emoji": True,
                         },
                         "value": "email_not_in_dashboard_value",
-                        "action_id": "email_not_in_dashboard_action"
+                        "action_id": "email_not_in_dashboard_action",
                     }
-                ]
+                ],
             },
             {
                 "type": "actions",
@@ -185,14 +165,13 @@ def get_blocks_dashboard():
                         "text": {
                             "type": "plain_text",
                             "text": "Status de capacitado está desatualizado",
-                            "emoji": True
+                            "emoji": True,
                         },
                         "value": "status_not_updated_value",
-                        "action_id": "status_not_updated_action"
+                        "action_id": "status_not_updated_action",
                     }
-                ]
+                ],
             },
-
         ]
     }
 
@@ -204,24 +183,18 @@ def get_blocks_send_messages_to_analysts(user: str, subject: str, message: str):
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": f"*O usuário: {user} enviou a seguinte duvida:* \n"
-                }
+                    "text": f"*O usuário: {user} enviou a seguinte duvida:* \n",
+                },
             },
-            {
-                "type": "divider"
-            },
+            {"type": "divider"},
             {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": f"> Subject: {subject.upper()}\n"
-                            f"> Message: {message}"
-                }
-
+                    "text": f"> Subject: {subject.upper()}\n" f"> Message: {message}",
+                },
             },
-            {
-                "type": "divider"
-            }
+            {"type": "divider"},
         ]
     }
 
@@ -232,7 +205,7 @@ def get_direct_thread_link(payload):
     parent_message_ts = payload["message"]["thread_ts"]
 
     # Replace 'YOUR_SLACK_TEAM_DOMAIN' with your Slack team's domain
-    slack_team_domain = 'teste-gustavo'
+    slack_team_domain = "teste-gustavo"
 
     link = f"https://{slack_team_domain}.slack.com/archives/{channel_id}/p{parent_message_ts.replace('.', '')}"
     return link

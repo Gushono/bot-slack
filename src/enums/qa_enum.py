@@ -10,6 +10,7 @@ class EnumQuestions(Enum):
 
     Each value represents a question related to the topic.
     """
+
     QUESTION_1 = (
         "*¿Cuáles son los cursos que todo desarrollador de MELI necesita hacer para se"
         " considerar como capacitado?*"
@@ -21,11 +22,17 @@ class EnumQuestions(Enum):
 
     QUESTION_4 = "*¿En cuál link yo me registro en la plataforma Secure Code Warrior?*"
 
-    QUESTION_5 = "*¿Cuánto tiempo tengo para calificar después de registrarme en la plataforma?*"
+    QUESTION_5 = (
+        "*¿Cuánto tiempo tengo para calificar después de registrarme en la plataforma?*"
+    )
 
-    QUESTION_6 = "*Mi licencia venció pero quiero tomar más cursos, ¿cómo puedo proceder?*"
+    QUESTION_6 = (
+        "*Mi licencia venció pero quiero tomar más cursos, ¿cómo puedo proceder?*"
+    )
 
-    QUESTION_7 = "*Mi licencia venció y no había terminado el curso, ¿pierdo mi avance?*"
+    QUESTION_7 = (
+        "*Mi licencia venció y no había terminado el curso, ¿pierdo mi avance?*"
+    )
 
     QUESTION_8 = "*¿Dónde puedo ver si ya estoy capacitad@?*"
 
@@ -39,7 +46,9 @@ class EnumQuestions(Enum):
         "tablero de Tableau?*"
     )
 
-    QUESTION_11 = "*¿Este año ya hice uno de los cursos recomendados, ¿debo volver a hacer?*"
+    QUESTION_11 = (
+        "*¿Este año ya hice uno de los cursos recomendados, ¿debo volver a hacer?*"
+    )
 
 
 class EnumAnswers(Enum):
@@ -66,9 +75,7 @@ class EnumAnswers(Enum):
         "más de 15 cursos en la plataforma y todos pueden hacer."
     )
 
-    ANSWER_4 = (
-        ">https://securecodewarrior.com/meli, no olvides registrarte con tu correo corporativo."
-    )
+    ANSWER_4 = ">https://securecodewarrior.com/meli, no olvides registrarte con tu correo corporativo."
 
     ANSWER_5 = ">La licencia de Secure Code Warrior tiene una duración de 14 dias."
 

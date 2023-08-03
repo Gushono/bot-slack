@@ -1,6 +1,9 @@
 from flask import Response
 
-from src.services.events_service.events_slack_blocks import get_block_initial_message, get_home_page
+from src.services.events_service.events_slack_blocks import (
+    get_block_initial_message,
+    get_home_page,
+)
 from src.services.slack_service import SlackService
 from src.services.utils import BaseStrategy
 
@@ -16,6 +19,7 @@ class OnMessageStrategy(BaseStrategy):
     Attributes:
         allowed_channels (list[str]): List of allowed channel IDs for message handling.
     """
+
     allowed_channels = ["C04GL827WKX"]
 
     def execute(self, event: dict, slack_service: SlackService):
@@ -84,8 +88,7 @@ class OnAppHomeOpenedStrategy(BaseStrategy):
         """
         home_page = get_home_page()
         response = slack_service.views_publish(
-            user_id=payload["user"],
-            view=home_page["view"]
+            user_id=payload["user"], view=home_page["view"]
         )
 
         if response:
