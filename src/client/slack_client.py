@@ -1,9 +1,25 @@
+from abc import ABC
+
 from slack import WebClient
 
 from src.environment import env
 
 
-class SlackClient:
+class SlackClientBase(ABC):
+    def send_message(self, params: dict):
+        pass
+
+    def view_open(self, params: dict):
+        pass
+
+    def views_publish(self, params: dict):
+        pass
+
+    def obtain_bot_id(self):
+        pass
+
+
+class SlackClient(SlackClientBase):
     def __init__(self):
         slack_bot_token = env.get_slack_token()
         if not slack_bot_token:

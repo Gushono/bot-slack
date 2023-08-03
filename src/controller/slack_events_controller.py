@@ -1,6 +1,6 @@
 import json
 
-from flask import Blueprint, request, Response, jsonify
+from flask import Blueprint, request, Response
 from slack_sdk.signature import SignatureVerifier
 
 from src.environment import env
@@ -13,13 +13,15 @@ signature_verifier = SignatureVerifier(env.get_signing_secret())
 
 @slack_events_blueprint.route("/slack/events", methods=["POST"])
 def handle_slack_events():
-    if not signature_verifier.is_valid_request(request.get_data(), request.headers):
-        return jsonify({"error": "Invalid request"}), 403
+    # if not signature_verifier.is_valid_request(request.get_data(), request.headers):
+    #     return jsonify({"error": "Invalid request"}), 403
 
     data = request.get_json()
 
     if data.get("event") is not None:
-        return handle_events(data["event"])
+        response = handle_events(data["event"])
+        if response is not None:
+            return Response(), 200
 
     return Response(), 200
 

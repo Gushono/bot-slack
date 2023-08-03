@@ -1,3 +1,4 @@
+import os
 from enum import Enum
 
 from src.client.slack_client import SlackClient
@@ -11,10 +12,10 @@ class EnumValuesSelectBoxSubject(Enum):
 class SlackService:
     def __init__(self, slack_client: SlackClient = None):
         self._slack_client = slack_client or SlackClient()
-        self.bot_id = self._obtain_bot_id()
+        self.bot_id = os.getenv("BOT_ID") or self._slack_client.obtain_bot_id()
 
     def _obtain_bot_id(self) -> str:
-        if self.bot_id is None:
+        if not self.bot_id:
             self.bot_id = self._slack_client.obtain_bot_id()
 
         return self.bot_id
