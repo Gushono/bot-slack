@@ -6,11 +6,7 @@ from src.services.interactive_service.actions_slack_blocks import (
     build_markdown_text_for_principais_duvidas
 )
 from src.services.slack_service import SlackService
-
-
-class BaseStrategy:
-    def execute(self, payload: dict, slack_service: SlackService):
-        pass
+from src.services.utils import BaseStrategy
 
 
 class SecureCodeWarriorStrategy(BaseStrategy):

@@ -22,3 +22,7 @@ class SlackClient:
     def views_publish(self, params: dict):
         response = self.client.views_publish(**params)
         return response
+
+    def obtain_bot_id(self):
+        response = self.client.api_call("auth.test")
+        return response["user_id"]
