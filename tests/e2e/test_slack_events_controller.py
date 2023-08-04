@@ -5,6 +5,9 @@ Unit tests for the Slack events handling.
 from unittest.mock import patch
 
 from flask import Response
+from slack_sdk import WebClient
+
+from src.client.slack_client import SlackClient
 
 
 @patch(
@@ -76,6 +79,33 @@ def test_handle_slack_events_signature_failed(mock_is_valid_request, client):
 
     # Assert that the response is as expected
     assert response.status_code == 403
+
+    # Assert that the mocked methods were called correctly
+    mock_is_valid_request.assert_called_once()
+
+
+@patch(
+    "src.controller.slack_events_controller.signature_verifier.is_valid_request",
+    return_value=True
+)
+@patch("src.client.slack_client.WebClient.api_call", return_value=None)
+@patch("src.client.slack_client.WebClient.chat_postMessage", return_value=None)
+def test_handle_slack_events_on_message_success(
+        mock_chat_post_message, mock_api_call, mock_is_valid_request, client
+):
+    mock_event_data = {
+        "event": {
+            "type": "message",
+            "text": "hello",
+            "channel": "C1234567890",
+        }
+    }
+
+    # Simulate a POST request with mocked event data
+    response: Response = client.post("/slack/events", json=mock_event_data)
+
+    # Assert that the response is as expected
+    assert response.status_code == 200
 
     # Assert that the mocked methods were called correctly
     mock_is_valid_request.assert_called_once()

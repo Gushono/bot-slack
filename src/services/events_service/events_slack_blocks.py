@@ -123,6 +123,7 @@ def get_home_page():
                                 "emoji": True,
                             },
                             "value": "my_qualification_status_value",
+                            "action": "my_qualification_status_action"
                         },
                         {
                             "type": "button",
@@ -132,6 +133,7 @@ def get_home_page():
                                 "emoji": True,
                             },
                             "value": "link_dashboard_home_value",
+                            "action": "link_dashboard_home_action"
                         },
                     ],
                 },
