@@ -7,7 +7,7 @@ from src.services.interactive_service.actions_strategy import (
     DashboardStrategy,
     EmailStatusUpdateStrategy,
     PlatformLicenseSecureCodeWarriorsStrategy,
-    SSDLCStrategy,
+    SSDLCStrategy, StillNeedHelpStrategy,
 )
 from src.services.slack_service import SlackService
 
@@ -21,6 +21,7 @@ strategies_actions = {
     "email_not_in_dashboard_value": EmailStatusUpdateStrategy(),
     "status_not_updated_value": EmailStatusUpdateStrategy(),
     "platform_license_secure_code_warriors_value": PlatformLicenseSecureCodeWarriorsStrategy(),
+    "need_help_value": StillNeedHelpStrategy(),
 }
 
 

@@ -70,17 +70,6 @@ def get_block_initial_message():
                     }
                 ],
             },
-            {
-                "type": "actions",
-                "elements": [
-                    {
-                        "type": "button",
-                        "text": {"type": "plain_text", "text": "Outros", "emoji": True},
-                        "value": "others_value",
-                        "action_id": "others_action",
-                    }
-                ],
-            },
             {"type": "divider"},
             {
                 "type": "actions",

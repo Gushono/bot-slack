@@ -203,7 +203,7 @@ class EmailStatusUpdateStrategy(BaseStrategy):
             user=payload["user"]["username"],
             subject=payload["actions"][0]["value"],
             message="Usuário solicitou ajuda no grupo a respeito do dashboard, segue link da thread: "
-            + thread_link,
+                    + thread_link,
         )
 
         response_message_to_specialist = slack_service.send_slack_message(
@@ -246,3 +246,35 @@ class PlatformLicenseSecureCodeWarriorsStrategy(BaseStrategy):
             text=f"Você foi redirecionado para o <{self.WORKPLACE_LINK}|Workplace> para mais informações.",
         )
         return response
+
+
+class StillNeedHelpStrategy(BaseStrategy):
+    """
+    Strategy for providing information about the Platform License related to Secure Code Warriors.
+    """
+    BOT_CHANNEL = "C04JBNDLF16"
+    RESPONSE_TO_USER = (
+        "Enviamos mensagem para os nossos analistas, em breve entraremos em contato com você por aqui!"
+        " Caso ainda não tenha detalhado sua dúvida, por favor, escreva abaixo"
+    )
+
+    def execute(self, payload: dict, slack_service: SlackService):
+        thread_link = get_direct_thread_link(payload)
+        blocks_messages_specialist = get_blocks_send_messages_to_analysts(
+            user=payload["user"]["username"],
+            subject=payload["actions"][0]["value"],
+            message="Usuário precisa de ajuda no grupo, segue o link da thread: " + thread_link,
+        )
+
+        response_message_to_specialist = slack_service.send_slack_message(
+            channel=self.BOT_CHANNEL,
+            blocks=blocks_messages_specialist["blocks"],
+        )
+
+        response_message_to_user_in_thread = slack_service.send_slack_message(
+            thread_ts=payload["message"]["thread_ts"],
+            channel=payload["channel"]["id"],
+            text=self.RESPONSE_TO_USER,
+        )
+
+        return response_message_to_specialist and response_message_to_user_in_thread
