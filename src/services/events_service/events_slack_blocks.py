@@ -122,7 +122,7 @@ def get_home_page():
                                 "text": "Meu status de capacitação",
                                 "emoji": True,
                             },
-                            "value": "create_task",
+                            "value": "my_qualification_status_value",
                         },
                         {
                             "type": "button",
@@ -131,7 +131,7 @@ def get_home_page():
                                 "text": "Link dashboard",
                                 "emoji": True,
                             },
-                            "value": "create_project",
+                            "value": "link_dashboard_home_value",
                         },
                     ],
                 },
