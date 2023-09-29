@@ -5,9 +5,6 @@ Unit tests for the Slack events handling.
 from unittest.mock import patch
 
 from flask import Response
-from slack_sdk import WebClient
-
-from src.client.slack_client import SlackClient
 
 
 @patch(
@@ -109,3 +106,99 @@ def test_handle_slack_events_on_message_success(
 
     # Assert that the mocked methods were called correctly
     mock_is_valid_request.assert_called_once()
+
+
+def test_handle_interactive_endpoint_success_ignore_payload_without_user(client):
+    mock_payload = {
+        "payload": {
+            "user": None
+        }
+    }
+
+    # Simulate a POST request with mocked event data
+    response: Response = client.post("/interactive-endpoint", json=mock_payload)
+
+    # Assert that the response is as expected
+    assert response.status_code == 200
+
+
+@patch("src.client.slack_client.WebClient.api_call", return_value=None)
+@patch("src.client.slack_client.WebClient.chat_postMessage", return_value=None)
+def test_handle_interactive_endpoint_success(mock_post_message, mock_api_call, client):
+    mock_payload = {
+        "payload": {
+            "user": {
+                "id": "U0123456",
+            },
+            "message": {
+                "thread_ts": "1234567890.123456",
+            },
+            "channel": {
+                "id": "C1234567890",
+            },
+            "actions": [
+                {
+                    "action_id": "ssdlc_action",
+                    "value": "ssdlc_value",
+                },
+            ],
+        }
+    }
+
+    # Simulate a POST request with mocked event data
+    response: Response = client.post("/interactive-endpoint", json=mock_payload)
+
+    # Assert that the response is as expected
+    assert response.status_code == 200
+
+
+@patch("src.client.slack_client.WebClient.api_call", return_value=None)
+@patch("src.client.slack_client.WebClient.chat_postMessage", return_value=True)
+def test_handle_interactive_endpoint_success_returning_something(mock_post_message, mock_api_call, client):
+    mock_payload = {
+        "payload": {
+            "user": {
+                "id": "U0123456",
+            },
+            "message": {
+                "thread_ts": "1234567890.123456",
+            },
+            "channel": {
+                "id": "C1234567890",
+            },
+            "actions": [
+                {
+                    "action_id": "ssdlc_action",
+                    "value": "ssdlc_value",
+                },
+            ],
+        }
+    }
+
+    # Simulate a POST request with mocked event data
+    response: Response = client.post("/interactive-endpoint", json=mock_payload)
+
+    # Assert that the response is as expected
+    assert response.status_code == 200
+
+
+def test_handle_interactive_endpoint_failed_with_unknown_strategy(client):
+    mock_payload = {
+        "payload": {
+            "user": {
+                "id": "U0123456",
+            },
+            "actions": [
+                {
+                    "action_id": "unknown_action_id",
+                    "value": "unknown_action_value",
+                },
+            ],
+        }
+    }
+
+    # Simulate a POST request with mocked event data
+    response: Response = client.post("/interactive-endpoint", json=mock_payload)
+
+    # Assert that the response is as expected
+    assert response.status_code == 500

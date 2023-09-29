@@ -51,7 +51,8 @@ def interactive_endpoint() -> tuple[Response, int]:
     Returns:
         tuple[Response, int]: A tuple containing a response object and an HTTP status code.
     """
-    payload = json.loads(request.form["payload"])
+
+    payload = request.get_json()["payload"]
     if not payload["user"]:
         return Response(), 200
 
