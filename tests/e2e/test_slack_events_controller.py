@@ -116,10 +116,8 @@ def test_handle_interactive_endpoint_success_ignore_payload_without_user(client)
         }
     }
 
-    json_payload_str = json.dumps(mock_payload)
-
     # Simulate a POST request with mocked event data
-    response: Response = client.post("/interactive-endpoint", data=json_payload_str, content_type='application/json')
+    response: Response = client.post("/interactive-endpoint", json=mock_payload)
 
     # Assert that the response is as expected
     assert response.status_code == 200
