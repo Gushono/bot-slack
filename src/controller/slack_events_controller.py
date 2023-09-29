@@ -5,6 +5,7 @@ This module provides routes for handling incoming Slack events and interactive a
 """
 
 import json
+
 from flask import Blueprint, request, Response
 from slack_sdk.signature import SignatureVerifier
 
@@ -52,7 +53,7 @@ def interactive_endpoint() -> tuple[Response, int]:
         tuple[Response, int]: A tuple containing a response object and an HTTP status code.
     """
 
-    payload = json.loads(request.get_data())["payload"]
+    payload = json.loads(request.form["payload"])
     print(json.dumps(payload, indent=4))
     if not payload["user"]:
         return Response(), 200
