@@ -283,19 +283,19 @@ class StillNeedHelpStrategy(BaseStrategy):
         return response_message_to_specialist and response_message_to_user_in_thread
 
 
-class MyQualificationStatusStrategy(BaseStrategy):
-    """
-    Strategy for providing information about the qualification status and what courses the user needs to take.
-    """
-
-    def execute(self, payload: dict, slack_service: SlackService):
-        return Response(), 200
-
-
-class LinkDashboardHomeStrategy(BaseStrategy):
-    """
-    Returns the link of where the user needs to access the dashboard.
-    """
-
-    def execute(self, payload: dict, slack_service: SlackService):
-        return Response(), 200
+# class MyQualificationStatusStrategy(BaseStrategy):
+#     """
+#     Strategy for providing information about the qualification status and what courses the user needs to take.
+#     """
+#
+#     def execute(self, payload: dict, slack_service: SlackService):
+#         return Response(), 200
+#
+#
+# class LinkDashboardHomeStrategy(BaseStrategy):
+#     """
+#     Returns the link of where the user needs to access the dashboard.
+#     """
+#
+#     def execute(self, payload: dict, slack_service: SlackService):
+#         return Response(), 200

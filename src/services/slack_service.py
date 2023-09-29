@@ -1,4 +1,4 @@
-from src.client.slack_client import SlackClient
+from src.client.slack_client import SlackClient, SlackClientBase
 
 
 class SlackService:
@@ -14,7 +14,7 @@ class SlackService:
         _bot_id (str): The ID of the bot user.
     """
 
-    def __init__(self, slack_client: SlackClient = None):
+    def __init__(self, slack_client: SlackClientBase = None):
         """
         Initialize the SlackService.
 
