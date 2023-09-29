@@ -111,12 +111,15 @@ def test_handle_slack_events_on_message_success(
 def test_handle_interactive_endpoint_success_ignore_payload_without_user(client):
     mock_payload = {
         "payload": {
-            "user": None
+            "user": None,
+            "amigo": {
+                "oi": 1
+            }
         }
     }
 
     # Simulate a POST request with mocked event data
-    response: Response = client.post("/interactive-endpoint", json=mock_payload)
+    response: Response = client.post("/interactive-endpoint", data=mock_payload)
 
     # Assert that the response is as expected
     assert response.status_code == 200
