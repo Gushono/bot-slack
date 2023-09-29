@@ -1,7 +1,8 @@
 """
 Unit tests for the Slack events handling.
 """
-
+import json
+import urllib
 from unittest.mock import patch
 
 from flask import Response
@@ -112,14 +113,11 @@ def test_handle_interactive_endpoint_success_ignore_payload_without_user(client)
     mock_payload = {
         "payload": {
             "user": None,
-            "amigo": {
-                "oi": 1
-            }
         }
     }
 
     # Simulate a POST request with mocked event data
-    response: Response = client.post("/interactive-endpoint", data=mock_payload)
+    response: Response = client.post("/interactive-endpoint", json=mock_payload)
 
     # Assert that the response is as expected
     assert response.status_code == 200
@@ -149,8 +147,7 @@ def test_handle_interactive_endpoint_success(mock_post_message, mock_api_call, c
     }
 
     # Simulate a POST request with mocked event data
-    response: Response = client.post("/interactive-endpoint", json=mock_payload)
-
+    response: Response = client.post("/interactive-endpoint", data=json.dumps(mock_payload))
     # Assert that the response is as expected
     assert response.status_code == 200
 
